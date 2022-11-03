@@ -1,7 +1,7 @@
 {
   "name": "project-2",
   "version": "1.0.0",
-  "description": "",
+  "description": "<img src=\"./assets/img/\" alt=\"\" height=\"300px\"/>",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -23,9 +23,12 @@
     "bcrypt": "^5.1.0",
     "connect-session-sequelize": "^7.1.5",
     "dotenv": "^16.0.3",
+    "equalizer": "^1.0.0",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
+    "handlebars": "^4.7.7",
+    "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "sequelize": "^6.25.3"
   }

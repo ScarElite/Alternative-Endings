@@ -1,39 +1,92 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alternate Endings</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alternate Endings</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+  </head>
 
-<body>
-  <div class="wrapper">
-    <header>
-      <h1>
-        <a href="/">Alternate Endings</a>
-      </h1>
-      <nav>
-        {{#if loggedIn}}
-        <a href="/dashboard">dashboard</a>
-        <button id="logout" class="btn-no-style">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-      </nav>
-    </header>
-    <main>
-      {{{ body }}}
-    </main>
-    <footer>
-      Thanks for visiting!
-    </footer>
-  </div>
-  
-  {{!-- {{#if loggedIn}}
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+          Alternate Endings
+        </a>
+
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item">
+            Home
+          </a>
+
+          <a class="navbar-item">
+            Dashboard
+          </a>
+        </div>
+        <div class="navbar-search">
+          <div class="navbar-item">
+            <input type="text" class="input" />
+          </div>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary">
+                <strong>Sign up</strong>
+              </a>
+              <a class="button is-light">
+                Log in
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="section">
+      <div class="container">
+        <header>
+          <h1>
+            <a href="/">Alternate Endings</a>
+          </h1>
+          <nav>
+            {{#if loggedIn}}
+              <a href="/dashboard">dashboard</a>
+              <button id="logout" class="btn-no-style">logout</button>
+            {{else}}
+              <a href="/login">login</a>
+            {{/if}}
+          </nav>
+        </header>
+        <main>
+          {{{body}}}
+        </main>
+        <footer>
+          Thanks for visiting!
+        </footer>
+
+        {{!-- {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
   {{/if}} --}}
-</body>
+      </div>
+    </section>
+  </body>
 
 </html>
