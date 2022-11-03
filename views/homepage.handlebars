@@ -1,1 +1,9 @@
 <h1>Hello World!</h1>
+
+<ul class="upcoming-movie-list" style="list-style: none;">
+  {{!-- {{#each movies as |movie|}} --}}
+  <li>
+    {{> movie-cover movie }}
+  </li>
+  {{!-- {{/each}} --}}
+</ul>
