@@ -9,6 +9,15 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet"  href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
   </head>
 
   <body>
@@ -43,8 +52,20 @@
         </div>
         <div class="navbar-search">
           <div class="navbar-item">
-            <input type="text" class="input" />
+            <div class="field">
+              <p class="control has-icons-left has-icons-right">
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="Search for movies"
+                />
+                <span class="icon is-small is-left">
+                  <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                </span>
+              </p>
+            </div>
           </div>
+
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
@@ -61,32 +82,21 @@
       </div>
     </nav>
     <section class="section">
-      <div class="container">
-        <header>
-          <h1>
-            <a href="/">Alternate Endings</a>
-          </h1>
-          <nav>
-            {{#if loggedIn}}
-              <a href="/dashboard">dashboard</a>
-              <button id="logout" class="btn-no-style">logout</button>
-            {{else}}
-              <a href="/login">login</a>
-            {{/if}}
-          </nav>
-        </header>
         <main>
           {{{body}}}
         </main>
         <footer>
           Thanks for visiting!
         </footer>
-
         {{!-- {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
   {{/if}} --}}
       </div>
     </section>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="/javascript/slick.js"></script>
+<script src="/javascript/scripts.js"></script>
   </body>
 
 </html>
