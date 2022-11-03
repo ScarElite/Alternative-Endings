@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alternate Endings</title>
+    <title>Alternative Endings</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link
       rel="stylesheet"
@@ -16,15 +16,17 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet"  href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css"
+    />
   </head>
 
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="#">
-          Alternate Endings
+        <a class="navbar-item is-size-1" href="#">
+          Alternative Endings
         </a>
 
         <a
@@ -55,11 +57,11 @@
             <div class="field">
               <p class="control has-icons-left has-icons-right">
                 <input
-                  class="input"
+                  class="input mt-4"
                   type="text"
                   placeholder="Search for movies"
                 />
-                <span class="icon is-small is-left">
+                <span class="icon is-small is-left mt-3">
                   <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
                 </span>
               </p>
@@ -81,22 +83,27 @@
         </div>
       </div>
     </nav>
-    <section class="section">
-        <main>
-          {{{body}}}
-        </main>
-        <footer>
-          Thanks for visiting!
-        </footer>
-        {{!-- {{#if loggedIn}}
-  <script src="/javascript/logout.js"></script>
-  {{/if}} --}}
+    <main>
+      {{{body}}}
+    </main>
+    <footer class="footer is-info">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Thank you for visiting!</strong>
+        </p>
       </div>
-    </section>
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="/javascript/slick.js"></script>
-<script src="/javascript/scripts.js"></script>
+    </footer>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"
+    ></script>
+    <script>
+      var slider = tns({ container: '.movieslider', items: 8, slideBy: 'page',
+      autoplay: false, pages: false })
+    </script>
+    <script>
+      var slider = tns({ container: '.intheaters', items: 8, slideBy: 'page',
+      autoplay: false, pages: false })
+    </script>
   </body>
 
 </html>
