@@ -28,4 +28,9 @@
 
 .topfive {
   width: 100%;
+  font-size: large;
+}
+
+.quote {
+  font-size: large;
 }
