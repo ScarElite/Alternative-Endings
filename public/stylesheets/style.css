@@ -1,0 +1,36 @@
+.movieitem {
+  background-color: aliceblue;
+  margin: 20px;
+}
+
+.movieimg {
+  height: 250px;
+}
+
+.tns-item {
+  width: auto !important;
+}
+
+.tns-controls [aria-controls] {
+  margin: 0 10px;
+  height: 2.5em;
+  background-color: 4cc9f0;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+}
+
+.tns-controls {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.topfive {
+  width: 100%;
+  font-size: large;
+}
+
+.quote {
+  font-size: large;
+}
