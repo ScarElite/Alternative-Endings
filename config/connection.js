@@ -2,6 +2,8 @@ const Sequelize = require("sequelize");
 
 require("dotenv").config();
 
+const isEnabled = process.env.ENABLE_LOGGING === 'true';
+
 // create connection to our db
 const sequelize = process.env.JAWSDB_URL
   ? new Sequelize(process.env.JAWSDB_URL)
@@ -9,6 +11,7 @@ const sequelize = process.env.JAWSDB_URL
       host: "localhost",
       dialect: "mysql",
       port: 3306,
+      logging: isEnabled
     });
 
 module.exports = sequelize;

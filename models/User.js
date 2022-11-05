@@ -14,14 +14,23 @@ class User extends Model {
 User.init(
   {
     id: {
-      type: DataTypes.INTEGER,
+      // type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
     },
-    username: {
+    // username: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
+    firstName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     email: {
       type: DataTypes.STRING,
@@ -56,8 +65,8 @@ User.init(
       },
     },
     sequelize,
-    timestamps: false,
-    freezeTableName: true,
+    timestamps: false, // needed?
+    freezeTableName: true, // same here
     underscored: true,
     modelName: "user",
   }
