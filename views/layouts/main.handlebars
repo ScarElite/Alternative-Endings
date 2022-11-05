@@ -56,6 +56,8 @@
           <div class="navbar-item">
             <div class="field">
               <p class="control has-icons-left has-icons-right">
+                {{!-- Having the form in this place breaks the search icon at the moment. Won't work otherwise --}}
+                <form id="search-form" class="search-form">
                 <input
                   class="input mt-4"
                   type="text"
@@ -64,6 +66,7 @@
                 <span class="icon is-small is-left mt-3">
                   <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
                 </span>
+                </form>
               </p>
             </div>
           </div>
