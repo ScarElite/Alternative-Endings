@@ -1,1 +1,12 @@
-<h1>You searched for <span>${search.value}</span></h1>
+<h1>You searched for <span></span></h1>
+
+<ol class="movie-list">
+{{#each this}}
+<li>
+    Hello There
+    {{> movie}}
+    </li>
+{{/each}}
+</ol>
+
+<script src="/javascript/search.js"></script>

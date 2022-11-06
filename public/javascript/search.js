@@ -10,32 +10,34 @@ function searchResults(event) {
 
   // var apiKey = process.env.API_KEY;
 
-  // fetch(
-  //   "https://api.themoviedb.org/3/search/movie?api_key=" + process.env.API_KEY +"&query=" +
-  //     input
-  // )
-  //   .then(function (response) {
-  //     response
-  //       .json()
-  //       .then(function (data) {
-  //         console.log(data);
-  //       })
-  //       .then(function () {
-  //         document.location.replace("/results/" + input);
-  //       });
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
+  fetch(
+    "https://api.themoviedb.org/3/search/movie?api_key=" +
+      process.env.API_KEY +
+      "&query=" +
+      input
+  )
+    .then(function (response) {
+      response
+        .json()
+        .then(function (data) {
+          console.log(data);
+        })
+        .then(function () {
+          document.location.replace("/results/" + input);
+        });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
-  fetch(`/results/` + input, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then(() => {
-    document.location.replace("/results");
-  });
+  // fetch(`/results/` + input, {
+  //   method: "GET",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // }).then(() => {
+  //   document.location.replace("/results");
+  // });
 
   // const response = fetch(`/results/` + input, {
   //   method: "GET",

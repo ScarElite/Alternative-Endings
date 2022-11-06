@@ -22,9 +22,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:title", (req, res) => {
-  console.log("+++++++++++++++++++++++++++++");
+  res.render("search-results");
+  console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
   console.log("THIS IS ", req.params.title);
-  // var input = req.params.title;
 
   // var apiKey = process.env.API_KEY;
 
@@ -38,13 +38,10 @@ router.get("/:title", (req, res) => {
       response.json().then(function (data) {
         console.log(data);
       });
-
-      res.render("search-results");
     })
     .catch((err) => {
       console.log(err);
     });
-  // res.render("search-results");
 });
 
 module.exports = router;
