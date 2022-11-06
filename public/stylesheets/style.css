@@ -34,4 +34,11 @@
   font-size: large;
 }
 
+.login-pic {
+  background: linear-gradient(to top, #3204fdba, #763e9bcc),
+    url(/assets/img/stock/popcorn1.jpg);
+}
 
+.fullheight {
+  height: calc(100vh - 88px - 144px);
+}
