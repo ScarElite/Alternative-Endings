@@ -23,7 +23,28 @@ router.get("/", (req, res) => {
 
 router.get("/:title", (req, res) => {
   console.log("+++++++++++++++++++++++++++++");
-  res.render("search-results");
+  console.log("THIS IS ", req.params.title);
+  // var input = req.params.title;
+
+  // var apiKey = process.env.API_KEY;
+
+  fetch(
+    "https://api.themoviedb.org/3/search/movie?api_key=" +
+      process.env.API_KEY +
+      "&query=" +
+      req.params.title
+  )
+    .then(function (response) {
+      response.json().then(function (data) {
+        console.log(data);
+      });
+
+      res.render("search-results");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  // res.render("search-results");
 });
 
 module.exports = router;

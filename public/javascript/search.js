@@ -1,3 +1,6 @@
+// Fixes the Uncaught ReferenceError: process is not defined
+// const NODE_ENV = process.env.NODE_ENV;
+
 function searchResults(event) {
   event.preventDefault();
 
@@ -5,29 +8,36 @@ function searchResults(event) {
   var input = userText.value.trim();
   console.log(input);
 
-  const options = {
+  // var apiKey = process.env.API_KEY;
+
+  // fetch(
+  //   "https://api.themoviedb.org/3/search/movie?api_key=" + process.env.API_KEY +"&query=" +
+  //     input
+  // )
+  //   .then(function (response) {
+  //     response
+  //       .json()
+  //       .then(function (data) {
+  //         console.log(data);
+  //       })
+  //       .then(function () {
+  //         document.location.replace("/results/" + input);
+  //       });
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+
+  fetch(`/results/` + input, {
     method: "GET",
     headers: {
-      Authorization: "Bearer " + process.env.API_KEY_V4,
-      "Content-Type": "application/json;charset=utf-8",
+      "Content-Type": "application/json",
     },
-  };
+  }).then(() => {
+    document.location.replace("/results");
+  });
 
-  const apiUrl =
-    "https://api.themoviedb.org/3/movie/?&apiKey=" +
-    process.env.API_KEY +
-    "&query=hello";
-
-  fetch(apiUrl, options)
-    .then((data) => {
-      console.log("MOVIE", data);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-
-  // const response = await fetch(`/results`, {
+  // const response = fetch(`/results/` + input, {
   //   method: "GET",
   //   headers: {
   //     "Content-Type": "application/json",
