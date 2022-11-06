@@ -16,7 +16,15 @@
     </p>
   </div>
   <div class="movieslider">
-    <div class="movieitem"><img
+    <ol class="movie-list">
+{{#each this}}
+<li>
+    Placement Text
+    {{> movie}}
+    </li>
+{{/each}}
+</ol>
+    {{!-- <div class="movieitem"><img
         class="movieimg movieimgbtn"
         src="/assets/img/movies/1.jpeg"
       /></div>
@@ -47,7 +55,7 @@
     <div class="movieitem"><img
         class="movieimg"
         src="/assets/img/movies/8.jpeg"
-      /></div>
+      /></div> --}}
   </div>
 </section>
 <section class="hero is-success">
@@ -60,7 +68,15 @@
     </p>
   </div>
   <div class="intheaters">
-    <div class="movieitem"><img
+    <ol class="movie-list">
+{{#each this}}
+<li>
+    Movie Title
+    {{> movie}}
+    </li>
+{{/each}}
+</ol>
+    {{!-- <div class="movieitem"><img
         class="movieimg"
         src="/assets/img/movies/1.jpeg"
       /></div>
@@ -91,7 +107,7 @@
     <div class="movieitem"><img
         class="movieimg"
         src="/assets/img/movies/8.jpeg"
-      /></div>
+      /></div> --}}
   </div>
 </section>
 <div class="my-slider">
