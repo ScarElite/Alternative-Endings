@@ -25,7 +25,7 @@
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item is-size-1" href="#">
+        <a class="navbar-item is-size-1" href="/">
           Alternate Endings
         </a>
 
@@ -44,11 +44,11 @@
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item">
+          <a class="navbar-item" href="/">
             Home
           </a>
 
-          <a class="navbar-item">
+          <a class="navbar-item" href="/dashboard">
             Dashboard
           </a>
         </div>
@@ -75,11 +75,8 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button is-light">
-                Log in
+              <a class="button is-primary" href="/login">
+                <strong>Log-in</strong>
               </a>
             </div>
           </div>
@@ -92,7 +89,7 @@
     <footer class="footer is-info">
       <div class="content has-text-centered">
         <p>
-          <strong>Thank you for visiting!</strong>
+          <strong class="quote"></strong>
         </p>
       </div>
     </footer>
@@ -105,6 +102,19 @@
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"
     ></script>
+    <script src="/js/scripts.js"></script>
+    <div id="modal-js-example" class="modal">
+      <div class="modal-background"></div>
+
+      <div class="modal-content">
+        <div class="box">
+          <p>All Alternative Endings Have Spoilers</p>
+
+        </div>
+      </div>
+
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
     <script>
       var slider = tns({ container: '.movieslider', items: 8, slideBy: 'page',
       autoplay: false, pages: false });

@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="list-group mb-3 w-100">
+    {{#each this}}
+      <div class="list-group-item flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+          <small class="test-muted"><strong>{{user.username}}</strong>
+            on
+            {{format_date created_at}}</small>
+        </div>
+        <p class="mb-1">{{comment_body}}</p>
+      </div>
+    {{/each}}
+  </div>
+</div>
