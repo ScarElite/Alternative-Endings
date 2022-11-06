@@ -23,8 +23,8 @@
   </head>
 
   <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
+    {{! <nav class="columns" role="navigation" aria-label="main navigation">
+      <div class="column is-one-third">
         <a class="navbar-item is-size-1" href="/">
           Alternate Endings
         </a>
@@ -42,46 +42,87 @@
         </a>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item" href="/">
-            Home
-          </a>
+      <div id="navbarBasicExample" class="column">
+        <div class="columns">
 
-          <a class="navbar-item" href="/dashboard">
-            Dashboard
-          </a>
-        </div>
-        <div class="navbar-search">
-          <div class="navbar-item">
-            <div class="field">
-              <p class="control has-icons-left has-icons-right">
-                <input
-                  class="input mt-4"
-                  type="text"
-                  placeholder="Search for movies"
-                />
-                <span class="icon is-small is-left mt-3">
-                  <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-                </span>
-              </p>
-            </div>
+          <div class="column">
+            <a class="navbar-item" href="/">
+              Home
+            </a>
+
+            <a class="navbar-item" href="/dashboard">
+              Dashboard
+            </a>
           </div>
+          <div class="column is-full">
+            <div class="navbar-item">
+              <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                  <input
+                    class="input mt-4"
+                    type="text"
+                    placeholder="Search for movies"
+                  />
+                  <span class="icon is-small is-left mt-3">
+                    <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
 
-        </div>
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary" href="/login">
-                <strong>Log-in</strong>
-              </a>
+          </div>
+          <div class="column is-flex">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-outlined" href="/signup">
+                  <strong>Signup</strong>
+                </a>
+                <a class="button is-primary" href="/login">
+                  <strong>Log-in</strong>
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </nav> }}
+    <nav>
+      <div
+        class="is-flex is-justify-content-space-between is-align-content-center"
+      >
+        <div class="is-flex is-align-items-center">
+          <a class="ae-title" href="/">
+            Alternate Endings
+          </a>
+        </div>
+        <div class="is-flex is-align-items-center nav-center">
+          <div class="field menu-search">
+            <p class="control has-icons-left has-icons-right">
+              <input
+                class="input"
+                type="text"
+                placeholder="Search for movies"
+              />
+              <span class="icon is-small is-left">
+                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="is-flex is-align-items-center">
+          <div class="buttons">
+            <a class="button is-outlined" href="/signup">
+              <strong>Signup</strong>
+            </a>
+            <a class="button is-primary" href="/login">
+              <strong>Log-in</strong>
+            </a>
+          </div>
+        </div>
+      </div>
     </nav>
-    <main>
-        {{{body}}}
+    <main class="pt-6">
+      {{{body}}}
     </main>
     <footer class="footer is-info">
       <div class="content has-text-centered">
