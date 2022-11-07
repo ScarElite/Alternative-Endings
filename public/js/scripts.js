@@ -38,18 +38,21 @@ function inTheatersMovies() {
 
 var slider = tns({
   container: ".movieslider",
-  items: 8,
+  items: 6,
+  gutter: 20,
   slideBy: "page",
   autoplay: false,
-  pages: false,
+  loop: true,
 });
 
 var slider = tns({
-  container: ".intheaters",
-  items: 8,
-  slideBy: "page",
+  container: ".intheatersnow",
+  items: 6,
+  gutter: 20,
+  slideBy: 1,
   autoplay: false,
   pages: false,
+  loop: true,
 });
 
 const quotes = [

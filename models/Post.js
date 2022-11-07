@@ -36,5 +36,3 @@ Post.init(
 );
 
 module.exports = Post;
-
-module.exports = Post;
