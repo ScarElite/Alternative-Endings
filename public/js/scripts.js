@@ -1,3 +1,78 @@
+function upcomingMovies() {
+  const apiUrl =
+    "https://api.themoviedb.org/3/movie/upcoming?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&page=1";
+
+  fetch(apiUrl)
+    .then(function (response) {
+      response.json().then(function (data) {
+        console.log(data.results);
+        createUpcomingMovies(data);
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function createUpcomingMovies(data) {
+  console.log("UPCOMING MOVIES");
+  console.log(data);
+
+  var movieSliderEl = $(".movieslider");
+
+  // Set i to equal 2 because the first 2 results in the array are movies in the "In theaters now" api call
+  for (i = 2; i < 10; i++) {
+    console.log("MOVIE TITLE: ", data.results[i].title);
+
+    // movieBtnEl = $("<button></button>");
+    // movieBtnEl.attr("class", "js-modal-trigger button-reset");
+    // movieBtnEl.attr("data-target", "modal-js-example");
+
+    movieImgEl = $("<img></img>");
+    movieImgEl.attr("class", "movieimg");
+    movieImgEl.attr("src", "/assets/img/movies/1.jpeg");
+    movieSliderEl.append(movieImgEl);
+  }
+}
+
+function inTheatersMovies() {
+  const apiUrl =
+    "https://api.themoviedb.org/3/movie/now_playing?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&page=1";
+
+  fetch(apiUrl)
+    .then(function (response) {
+      response.json().then(function (data) {
+        console.log(data.results);
+        createInTheatersMovies(data);
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function createInTheatersMovies(data) {
+  console.log("IN THEATERS MOVIES");
+  console.log(data);
+
+  var movieSliderEl = $(".intheatersnow");
+
+  for (i = 0; i < 8; i++) {
+    console.log("MOVIE TITLE: ", data.results[i].title);
+
+    // movieBtnEl = $("<button></button>");
+    // movieBtnEl.attr("class", "js-modal-trigger button-reset");
+    // movieBtnEl.attr("data-target", "modal-js-example");
+
+    movieImgEl = $("<img></img>");
+    movieImgEl.attr("class", "movieimg");
+    // This is the movie image that the api comes back with but isn't able to display because it's calling an asset from its data
+    // movieImgEl.attr("src", data.results[].backdrop_path);
+    movieImgEl.attr("src", "/assets/img/movies/2.jpeg");
+    movieSliderEl.append(movieImgEl);
+  }
+}
+
 var slider = tns({
   container: ".movieslider",
   items: 6,
@@ -84,3 +159,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+upcomingMovies();
+inTheatersMovies();
