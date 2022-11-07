@@ -11,9 +11,7 @@ function searchResults(event) {
   // var apiKey = process.env.API_KEY;
 
   fetch(
-    "https://api.themoviedb.org/3/search/movie?api_key=" +
-      process.env.API_KEY +
-      "&query=" +
+    "https://api.themoviedb.org/3/search/movie?api_key=6bc85f8dbf1308d71b9a884c52f062a1&query=" +
       input
   )
     .then(function (response) {

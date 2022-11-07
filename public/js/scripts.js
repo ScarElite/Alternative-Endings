@@ -2,9 +2,7 @@ function upcomingMovies() {
   console.log("&&&&&&&&&&&&&&&&&&&&&&");
 
   const apiUrl =
-    "https://api.themoviedb.org/3/movie/upcoming?api_key=" +
-    process.env.API_KEY +
-    "&language=en-US&page=1";
+    "https://api.themoviedb.org/3/movie/upcoming?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&page=1";
 
   fetch(apiUrl)
     .then(function (response) {
@@ -21,9 +19,7 @@ function inTheatersMovies() {
   console.log("&&&&&&&&&&&&&&&&&&&&&&");
 
   const apiUrl =
-    "https://api.themoviedb.org/3/movie/now_playing?api_key=" +
-    process.env.API_KEY +
-    "&language=en-US&page=1";
+    "https://api.themoviedb.org/3/movie/now_playing?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&page=1";
 
   fetch(apiUrl)
     .then(function (response) {
