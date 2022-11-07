@@ -66,6 +66,8 @@ function createInTheatersMovies(data) {
 
     movieImgEl = $("<img></img>");
     movieImgEl.attr("class", "movieimg");
+    // This is the movie image that the api comes back with but isn't able to display because it's calling an asset from its data
+    // movieImgEl.attr("src", data.results[].backdrop_path);
     movieImgEl.attr("src", "/assets/img/movies/2.jpeg");
     movieSliderEl.append(movieImgEl);
   }
