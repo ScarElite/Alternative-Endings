@@ -23,8 +23,6 @@ router.get("/", (req, res) => {
 
 router.get("/:title", (req, res) => {
   res.render("search-results");
-  console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-  console.log("THIS IS ", req.params.title);
 
   fetch(
     "https://api.themoviedb.org/3/search/movie?api_key=6bc85f8dbf1308d71b9a884c52f062a1&query=" +
@@ -33,8 +31,23 @@ router.get("/:title", (req, res) => {
   )
     .then(function (response) {
       response.json().then(function (data) {
-        console.log(data);
+        console.log(data.results);
+
+        // Just testing to see if the console can read each title
+        for (i = 0; i < data.results.length; i++) {
+          console.log("MOVIE TITLE: ", data.results[i].title);
+        }
+        console.log("You searched for ", req.params.title);
       });
+      // .then((data) => {
+      // var headerEl = $("#searched-for");
+      // for (i = 0; i < data.results.length; i++) {
+      //   movieImgEl = $("<img></img>");
+      //   movieImgEl.attr("class", "movieimg");
+      //   movieImgEl.attr("src", "/assets/img/movies/2.jpeg");
+      //   headerEl.append(movieImgEl);
+      // }
+      // });
     })
     .catch((err) => {
       console.log(err);

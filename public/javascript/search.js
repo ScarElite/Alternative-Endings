@@ -1,4 +1,4 @@
-function searchResults(event) {
+async function searchResults(event) {
   event.preventDefault();
   console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 
