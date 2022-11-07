@@ -5,7 +5,7 @@ function upcomingMovies() {
   fetch(apiUrl)
     .then(function (response) {
       response.json().then(function (data) {
-        console.log(data.results);
+        // console.log(data.results);
         createUpcomingMovies(data);
       });
     })
@@ -15,14 +15,14 @@ function upcomingMovies() {
 }
 
 function createUpcomingMovies(data) {
-  console.log("UPCOMING MOVIES");
-  console.log(data);
+  // console.log("UPCOMING MOVIES");
+  // console.log(data);
 
   var movieSliderEl = $(".movieslider");
 
   // Set i to equal 2 because the first 2 results in the array are movies in the "In theaters now" api call
   for (i = 2; i < 10; i++) {
-    console.log("MOVIE TITLE: ", data.results[i].title);
+    // console.log("MOVIE TITLE: ", data.results[i].title);
 
     // movieBtnEl = $("<button></button>");
     // movieBtnEl.attr("class", "js-modal-trigger button-reset");
@@ -42,7 +42,7 @@ function inTheatersMovies() {
   fetch(apiUrl)
     .then(function (response) {
       response.json().then(function (data) {
-        console.log(data.results);
+        // console.log(data.results);
         createInTheatersMovies(data);
       });
     })
@@ -52,24 +52,34 @@ function inTheatersMovies() {
 }
 
 function createInTheatersMovies(data) {
-  console.log("IN THEATERS MOVIES");
-  console.log(data);
+  // console.log("IN THEATERS MOVIES");
+  // console.log(data);
 
-  var movieSliderEl = $(".intheatersnow");
+  var movieSliderEl = document.querySelector(".intheatersnow");
 
   for (i = 0; i < 8; i++) {
-    console.log("MOVIE TITLE: ", data.results[i].title);
+    // console.log("MOVIE TITLE: ", data.results[i].title);
 
-    // movieBtnEl = $("<button></button>");
-    // movieBtnEl.attr("class", "js-modal-trigger button-reset");
-    // movieBtnEl.attr("data-target", "modal-js-example");
+    // // movieBtnEl = $("<button></button>");
+    // // movieBtnEl.attr("class", "js-modal-trigger button-reset");
+    // // movieBtnEl.attr("data-target", "modal-js-example");
 
-    movieImgEl = $("<img></img>");
-    movieImgEl.attr("class", "movieimg");
-    // This is the movie image that the api comes back with but isn't able to display because it's calling an asset from its data
-    // movieImgEl.attr("src", data.results[].backdrop_path);
-    movieImgEl.attr("src", "/assets/img/movies/2.jpeg");
-    movieSliderEl.append(movieImgEl);
+    // movieImgEl = $("<img></img>");
+    // movieImgEl.attr("class", "movieimg");
+    // // This is the movie image that the api comes back with but isn't able to display because it's calling an asset from its data
+    // // movieImgEl.attr("src", data.results[].backdrop_path);
+    // movieImgEl.attr("src", "/assets/img/movies/2.jpeg");
+    // movieSliderEl.append(movieImgEl);
+    const movieItemEl = document.createElement("button");
+    movieItemEl.classList.add("js-modal-trigger", "button-reset");
+    movieItemEl.setAttribute("data-target", "modal-js-example");
+    movieItemEl.innerHTML = `
+    <img
+      class="movieimg"
+      src="https://image.tmdb.org/t/p/w500${data.results[i].poster_path}"
+      alt="1"
+    />`;
+    movieSliderEl.appendChild(movieItemEl);
   }
 }
 

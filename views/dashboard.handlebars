@@ -1,15 +1,45 @@
-<div class="dashboard-pic fullheight ">
-<div class="container mt-6">
-<div class="columns">
-<div class="columns is-centered is-vcentered py-6">
-  <div class="col-12">
+<div class="tile is-ancestor fullheight">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-primary">
     <h1 class="title mb-4">Hello {{username}}</h1>
     <h2 class="title mb-4">Create a new post!</h2>
+</div>
+        </article>
+        <article class="tile is-child notification is-warning">
+          <p class="title">...tiles</p>
+          <p class="subtitle">Bottom tile</p>
+          <div class="col-12 mb-4 message is-link mb-4">
+  <h2 class="mb-4 is-size-3 message-header has-text-black">Your Posts
+    <i class="fa-solid fa-heart"></i>
+  </h2>
+</div>
+{{#if posts.length}}
+  <div class="row message-body has-background-link-light">
+    <div class="col-12">
+    <div class="list-group">
+        {{#each posts as |post|}}
+        {{>post-info post}}
+        {{/each}}
+    </div>
+    </div>
   </div>
+  {{else}}
+  <div class="row">
+    <div class="col-12">
+    <p>You do not have any posts</p>
+    </div>
+  </div>
+{{/if}}
 </div>
-
-</div>
-<div class="box has-background-link-light">
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-info">
+          <p class="title">Middle tile</p>
+          <p class="subtitle">With an image</p>
+        <div class="box has-background-link-light">
   <form class="new-post-form">
     <div class="mb-3">
       <div class="field">
@@ -44,30 +74,30 @@
       </div>
     </div>
   </form>
+      </article>
 </div>
-
-<div class="col-12 mb-4 message is-link">
-  <h2 class="mb-4 is-size-3 message-header">Your Posts</h2>
-</div>
-
-{{#if posts.length}}
-  <div class="row message-body has-background-link-light">
-    <div class="col-12">
-    <div class="list-group">
-        {{#each posts as |post|}}
-        {{>post-info post}}
-        {{/each}}
+      </div>
     </div>
+    <div class="tile is-parent">
+      <article class="tile is-child notification is-danger">
+        <p class="title">Wide tile</p>
+        <p class="subtitle">Aligned with the right tile</p>
+        <div class="content">
+          <!-- Content -->
+        </div>
+      </article>
     </div>
   </div>
-  {{else}}
-  <div class="row">
-    <div class="col-12">
-    <p>You do not have any posts</p>
-    </div>
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-success">
+      <div class="content">
+        <p class="title">Tall tile</p>
+        <p class="subtitle">With even more content</p>
+        <div class="content">
+          <!-- Content -->
+        </div>
+      </div>
+    </article>
   </div>
-{{/if}}
-
-</div>
 </div>
 <script src="/js/add-post.js"></script>
