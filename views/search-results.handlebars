@@ -1,9 +1,9 @@
-<h1>You searched for <span></span></h1>
+<h1>You searched for <span>{{html_url}}</span></h1>
 
 <ol class="movie-list">
 {{#each this}}
 <li>
-    Hello There
+    {{original_title}}
     {{> movie}}
     </li>
 {{/each}}

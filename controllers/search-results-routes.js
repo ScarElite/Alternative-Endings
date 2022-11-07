@@ -26,11 +26,10 @@ router.get("/:title", (req, res) => {
   console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
   console.log("THIS IS ", req.params.title);
 
-  // var apiKey = process.env.API_KEY;
-
   fetch(
     "https://api.themoviedb.org/3/search/movie?api_key=6bc85f8dbf1308d71b9a884c52f062a1&query=" +
-      req.params.title
+      req.params.title +
+      "&language=en-US&page=1"
   )
     .then(function (response) {
       response.json().then(function (data) {
