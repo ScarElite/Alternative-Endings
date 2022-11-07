@@ -5,7 +5,6 @@ function upcomingMovies() {
   fetch(apiUrl)
     .then(function (response) {
       response.json().then(function (data) {
-        // console.log(data.results);
         createUpcomingMovies(data);
       });
     })
@@ -15,60 +14,11 @@ function upcomingMovies() {
 }
 
 function createUpcomingMovies(data) {
-  // console.log("UPCOMING MOVIES");
-  // console.log(data);
-
-  var movieSliderEl = $(".movieslider");
-
-  // Set i to equal 2 because the first 2 results in the array are movies in the "In theaters now" api call
+  var movieSliderEl = document.querySelector(".movieslider");
   for (i = 2; i < 10; i++) {
-    // console.log("MOVIE TITLE: ", data.results[i].title);
-
-    // movieBtnEl = $("<button></button>");
-    // movieBtnEl.attr("class", "js-modal-trigger button-reset");
-    // movieBtnEl.attr("data-target", "modal-js-example");
-
-    movieImgEl = $("<img></img>");
-    movieImgEl.attr("class", "movieimg");
-    movieImgEl.attr("src", "/assets/img/movies/1.jpeg");
-    movieSliderEl.append(movieImgEl);
-  }
-}
-
-function inTheatersMovies() {
-  const apiUrl =
-    "https://api.themoviedb.org/3/movie/now_playing?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&page=1";
-
-  fetch(apiUrl)
-    .then(function (response) {
-      response.json().then(function (data) {
-        // console.log(data.results);
-        createInTheatersMovies(data);
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}
-
-function createInTheatersMovies(data) {
-  // console.log("IN THEATERS MOVIES");
-  // console.log(data);
-
-  var movieSliderEl = document.querySelector(".intheatersnow");
-
-  for (i = 0; i < 8; i++) {
-    // console.log("MOVIE TITLE: ", data.results[i].title);
-
-    // // movieBtnEl = $("<button></button>");
-    // // movieBtnEl.attr("class", "js-modal-trigger button-reset");
-    // // movieBtnEl.attr("data-target", "modal-js-example");
-
     // movieImgEl = $("<img></img>");
     // movieImgEl.attr("class", "movieimg");
-    // // This is the movie image that the api comes back with but isn't able to display because it's calling an asset from its data
-    // // movieImgEl.attr("src", data.results[].backdrop_path);
-    // movieImgEl.attr("src", "/assets/img/movies/2.jpeg");
+    // movieImgEl.attr("src", "/assets/img/movies/1.jpeg");
     // movieSliderEl.append(movieImgEl);
     const movieItemEl = document.createElement("button");
     movieItemEl.classList.add("js-modal-trigger", "button-reset");
@@ -81,26 +31,58 @@ function createInTheatersMovies(data) {
     />`;
     movieSliderEl.appendChild(movieItemEl);
   }
+  var slider = tns({
+    container: ".movieslider",
+    items: 6,
+    gutter: 20,
+    slideBy: "page",
+    autoplay: false,
+    loop: true,
+  });
 }
 
-var slider = tns({
-  container: ".movieslider",
-  items: 6,
-  gutter: 20,
-  slideBy: "page",
-  autoplay: false,
-  loop: true,
-});
+const inTheatersMovies = () => {
+  const apiUrl =
+    "https://api.themoviedb.org/3/movie/now_playing?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&page=1";
 
-var slider = tns({
-  container: ".intheatersnow",
-  items: 6,
-  gutter: 20,
-  slideBy: 1,
-  autoplay: false,
-  pages: false,
-  loop: true,
-});
+  fetch(apiUrl)
+    .then(function (response) {
+      response.json().then(function (data) {
+        createInTheatersMovies(data);
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+const createInTheatersMovies = (data) => {
+  var movieSliderEl = document.querySelector(".intheatersnow");
+  for (i = 0; i < 8; i++) {
+    const movieItemEl = document.createElement("button");
+    movieItemEl.classList.add("js-modal-trigger", "button-reset");
+    movieItemEl.setAttribute("data-target", "modal-js-example");
+    movieItemEl.innerHTML = `
+    <img
+      class="movieimg"
+      src="https://image.tmdb.org/t/p/w500${data.results[i].poster_path}"
+      alt="1"
+    />`;
+    movieSliderEl.appendChild(movieItemEl);
+  }
+  var slider = tns({
+    container: ".intheatersnow",
+    items: 6,
+    gutter: 20,
+    slideBy: 1,
+    autoplay: false,
+    pages: false,
+    loop: true,
+  });
+};
+
+upcomingMovies();
+inTheatersMovies();
 
 const quotes = [
   "Human beings love stories because they safely show us beginnings, middles and ends. ~A. S. Byatt",
@@ -169,6 +151,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
-upcomingMovies();
-inTheatersMovies();
