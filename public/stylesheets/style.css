@@ -43,6 +43,12 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.dashboard-pic {
+  background: linear-gradient(to top, #3204fdba, #763e9bcc),
+    url(/assets/img/stock/film.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .fullheight {
   height: calc(100vh - 88px - 144px);
