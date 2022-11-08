@@ -25,7 +25,9 @@ router.get("/:title", (req, res) => {
   res.render("search-results");
 
   fetch(
-    "https://api.themoviedb.org/3/search/movie?api_key=6bc85f8dbf1308d71b9a884c52f062a1&query=" +
+    "https://api.themoviedb.org/3/search/movie?api_key=" +
+      process.env.API_KEY +
+      "&query=" +
       req.params.title +
       "&language=en-US&page=1"
   )
