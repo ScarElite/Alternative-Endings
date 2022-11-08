@@ -1,18 +1,10 @@
-const router = require('express').Router();
-const { UserController } = require('../../controllers');
+const router = require("express").Router();
+const userRoutes = require("./user-routes");
+const postRoutes = require("./post-routes");
+const commentRoutes = require("./comment-routes");
 
-const isAuthenticated = require('../../middleware/isAuthenticated');
+router.use("/users", userRoutes);
+router.use("/posts", postRoutes);
+router.use("/comments", commentRoutes);
 
-const userRoutes = require('./user-routes.js');
-const postRoutes = require('./post-routes');
-const commentRoutes = require('./comment-routes');
-
-router.use('/users', userRoutes);
-router.use('/posts', postRoutes);
-router.use('/comments', commentRoutes);
-
-router.post('/register', UserController.register);
-router.post('/login', UserController.login);
-router.post('/logout', isAuthenticated, UserController.logout);
-
-module.exports = router; //change
+module.exports = router;
