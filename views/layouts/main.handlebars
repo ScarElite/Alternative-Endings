@@ -23,73 +23,62 @@
   </head>
 
   <body>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item is-size-1" href="#">
-          Alternate Endings
-        </a>
-
-        <a
-          role="button"
-          class="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasicExample"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item">
-            Home
+    <nav>
+      <div
+        class="is-flex is-justify-content-space-between is-align-content-center"
+      >
+        <div class="is-flex is-align-items-center">
+          <a class="ae-title" href="/">
+            Alternate Endings
           </a>
-
-          <a class="navbar-item">
-            Dashboard
-          </a>
-        </div>
-        <div class="navbar-search">
-          <div class="navbar-item">
-            <div class="field">
-              <p class="control has-icons-left has-icons-right">
-                <input
-                  class="input mt-4"
-                  type="text"
-                  placeholder="Search for movies"
-                />
-                <span class="icon is-small is-left mt-3">
-                  <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-                </span>
-              </p>
-            </div>
+          <div class="is-flex ml-6">
+            <a class="button mr-3" href="/">Home</a>
+            {{#if loggedIn}}
+              <a class="button" href="/dashboard">Dashboard</a>
+            {{/if}}
           </div>
-
         </div>
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button is-light">
-                Log in
-              </a>
-            </div>
+        <div class="is-flex is-align-items-center nav-center">
+          <form class="search-form">
+          <div class="field menu-search">
+            <p class="control has-icons-left has-icons-right">
+              <input
+                class="input"
+                type="text"
+                placeholder="Search for movies"
+              />
+              <span class="icon is-small is-left">
+                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+              </span>
+            </p>
           </div>
+          </form>
+        </div>
+        <div class="is-flex is-align-items-center">
+          <div class="buttons">
+              {{#if loggedIn}}
+                  <a class="button is-outlined logout-btn" href="/logout">
+              <strong>Logout</strong>
+            </a>
+              {{else}}
+            <a class="button is-outlined" href="/signup">
+              <strong>Signup</strong>
+            </a>
+            <a class="button is-primary" href="/login">
+              <strong>Log-in</strong>
+            </a>
+          </div>
+          {{/if}}
         </div>
       </div>
     </nav>
-    <main>
+    <main class="pt-6">
       {{{body}}}
     </main>
     <footer class="footer is-info">
       <div class="content has-text-centered">
         <p>
-          <strong class="quote">Thank you for visiting!</strong>
+          <strong class="quote"></strong>
         </p>
       </div>
     </footer>
@@ -102,6 +91,20 @@
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"
     ></script>
-    <script src="/javascript/scripts.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="/js/logout.js"></script>
+    <script src="/javascript/search.js"></script>
+    <div id="modal-js-example" class="modal">
+      <div class="modal-background"></div>
+
+      <div class="modal-content">
+        <div class="box">
+          <p>All Alternative Endings Have Spoilers</p>
+
+        </div>
+      </div>
+
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
   </body>
 </html>

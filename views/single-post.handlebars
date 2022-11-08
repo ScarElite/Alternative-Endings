@@ -1,0 +1,41 @@
+<div class="row">
+  <h2>{{post.title}}</h2>
+</div>
+<div class="row">
+  <p>{{post.content}}</p>
+</div>
+<div class="row">
+  <p>Posted by {{post.user.username}} on {{format_date post.created_at}}</p>
+</div>
+{{#if post.comments.length}}
+  <hr />
+  <div class="row">
+    <p>{{post.comments.length}} comment(s):</p>
+  </div>
+{{/if}}
+<div class="list-group mb-3">
+  {{#each post.comments}}
+    <div class="list-group-item flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <small class="text-muted"><strong>{{user.username}}</strong>
+          on
+          {{format_date created_at}}</small>
+      </div>
+      <p class="mb-1">{{comment_body}}</p>
+    </div>
+  {{/each}}
+</div>
+{{#if loggedIn}}
+  <div class="row mb-3">
+    <div class="col">
+      <p class="lead">Add a comment</p>
+      <form class="comment-form">
+        <textarea name="comment-body" class="form-control mb-3"></textarea>
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+{{/if}}
+{{#if loggedIn}}
+  <script src="/assets/js/comment.js"></script>
+{{/if}}
