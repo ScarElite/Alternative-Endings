@@ -1,5 +1,4 @@
 .movieitem {
-  background-color: aliceblue;
   margin: 20px;
 }
 
@@ -24,8 +23,77 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 40px;
+  padding: 0 40px;
+  box-sizing: border-box;
 }
 
 .topfive {
   width: 100%;
+  font-size: large;
+}
+
+.quote {
+  font-size: large;
+}
+
+.login-pic {
+  background: linear-gradient(to top, #3204fdba, #763e9bcc),
+    url(/assets/img/stock/popcorn1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.dashboard-pic {
+  background: linear-gradient(to top, #3204fdba, #763e9bcc),
+    url(/assets/img/stock/film.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.fullheight {
+  height: calc(100vh - 88px - 144px);
+}
+
+.ae-title {
+  font-size: 35px;
+  color: rgb(61, 61, 61);
+}
+
+nav {
+  z-index: 100;
+  position: fixed;
+  width: 100vw;
+  padding: 20px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  gap: 50px;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+}
+
+.nav-center {
+  flex: 100;
+  margin: 0 50px;
+}
+
+.menu-search {
+  width: 100%;
+}
+
+.button-reset {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.comingsoon {
+  background-color: #3204fd;
+}
+
+.intheaters {
+  background-color: #763e9b;
+}
+
+.tns-nav {
+  display: none !important;
 }
