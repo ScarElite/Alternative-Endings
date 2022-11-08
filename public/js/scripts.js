@@ -151,3 +151,41 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+const slider = document.querySelector(".modaltriggers");
+slider.addEventListener("click", (event) => {
+  const isButton = event.target.nodeName === "IMG";
+  if (!isButton) {
+    return;
+  }
+  const modalEl = document.querySelector(".modal");
+  modalEl.classList.add("is-active");
+});
+
+document.querySelector(".moviesearch").addEventListener("keypress", (event) => {
+  if (event.key === "Enter") {
+    let searchterm = document.querySelector(".moviesearch").value.trim();
+
+    let apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&query=${searchterm}&page=1&include_adult=false`;
+
+    fetch(apiUrl)
+      .then(function (response) {
+        response.json().then(function (data) {
+          showSearchResults(data);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+});
+
+function showSearchResults(data) {
+  let searchResultsEl = document.querySelector(".searchresults");
+
+  for (let i = 0; i < 5; i++) {
+    let searchresultitem = document.createElement("li");
+    searchresultitem.textContent = data.results[i].original_title;
+    searchResultsEl.appendChild(searchresultitem);
+  }
+}

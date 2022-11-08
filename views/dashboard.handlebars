@@ -1,10 +1,46 @@
-<div class="tile is-ancestor fullheight">
+<div class="pt-6">
+<div class="tile is-ancestor">
   <div class="tile is-vertical is-8">
     <div class="tile">
       <div class="tile is-parent is-vertical">
         <article class="tile is-child notification is-primary">
     <h1 class="title mb-4">Hello {{username}}</h1>
     <h2 class="title mb-4">Create a new post!</h2>
+    <div class="box has-background-link-light">
+  <form class="new-post-form">
+    <div class="mb-3">
+      <div class="field">
+        <label for="post-title" class="label is-size-5">Title</label>
+        <div class="control">
+          <input
+            type="text"
+            name="post-title"
+            class=" input is-info"
+            id="post-title"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="field">
+        <label
+          for="post-content"
+          class="label is-size-5"
+        >Content</label>
+        <div class="control">
+          <textarea
+            type="text"
+            name="post-content"
+            class="form-control post-content mb-3 input is-info"
+            id="post-content"
+          ></textarea>
+        </div>
+        <div class="control">
+          <button type="submit" class="button is-normal is-info">Save My Ending</button>
+          </div>
+      </div>
+    </div>
+  </form>
 </div>
         </article>
         <article class="tile is-child notification is-warning">
@@ -100,4 +136,6 @@
     </article>
   </div>
 </div>
+</div>
+
 <script src="/js/add-post.js"></script>
