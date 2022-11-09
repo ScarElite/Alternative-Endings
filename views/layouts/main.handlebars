@@ -1,191 +1,81 @@
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alternate Endings</title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alternate Endings</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css" />
+</head>
 
-  <body>
-    <nav>
-      <div
-        class="is-flex is-justify-content-space-between is-align-content-center"
-      >
-        <div class="is-flex is-align-items-center">
-          <a class="ae-title" href="/">
-            Alternate Endings
-          </a>
-          <div class="is-flex ml-6">
-            <a class="button mr-3" href="/">Home</i></a>
-            {{#if loggedIn}}
-              <a class="button" href="/dashboard">Dashboard</a>
-            {{/if}}
-          </div>
-        </div>
-        <div class="is-flex is-align-items-center nav-center">
-          <div class="field menu-search">
-            <p class="control has-icons-left has-icons-right">
-              <input
-                class="input moviesearch"
-                type="text"
-                placeholder="Search for movies"
-              />
-              <span class="icon is-small is-left">
-                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-              </span>
-            </p>
-          </div>
-        </div>
-        <div class="is-flex is-align-items-center">
-          <div class="buttons">
-              {{#if loggedIn}}
-                  <a class="button is-outlined logout-btn" href="/logout">
-              <strong>Logout</strong>
-            </a>
-              {{else}}
-            <a class="button is-outlined" href="/signup">
-              <strong>Signup</strong>
-            </a>
-            <a class="button has-background-danger" href="/login">
-              <strong>Log-in</strong>
-            </a>
-          </div>
+<body>
+  <nav>
+    <div class="is-flex is-justify-content-space-between is-align-content-center">
+      <div class="is-flex is-align-items-center">
+        <a class="ae-title" href="/">
+          Alternate Endings
+        </a>
+        <div class="is-flex ml-6">
+          <a class="button mr-3" href="/">Home</i></a>
+          {{#if loggedIn}}
+          <a class="button" href="/dashboard">Dashboard</a>
           {{/if}}
         </div>
       </div>
-    </nav>
-    <main class="pt-6">
-      {{{body}}}
-    </main>
-    <footer class="footer is-info">
-      <div class="content has-text-centered">
-        <p>
-          <strong class="quote"></strong>
-        </p>
+      <div class="is-flex is-align-items-center nav-center">
+        <div class="field menu-search">
+          <p class="control has-icons-left has-icons-right">
+            <input class="input moviesearch" type="text" placeholder="Search for movies" />
+            <span class="icon is-small is-left">
+              <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+            </span>
+          </p>
+        </div>
       </div>
-    </footer>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-      integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"
-    ></script>
-    <script src="/js/scripts.js"></script>
-    <script src="/js/logout.js"></script>
-    <div id="modal-js-example" class="modal">
-      <div class="modal-background"></div>
+      <div class="is-flex is-align-items-center">
+        <div class="buttons">
+          {{#if loggedIn}}
+          <a class="button is-outlined logout-btn" href="/logout">
+            <strong>Logout</strong>
+          </a>
+          {{else}}
+          <a class="button is-outlined" href="/signup">
+            <strong>Signup</strong>
+          </a>
+          <a class="button has-background-danger" href="/login">
+            <strong>Log-in</strong>
+          </a>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </nav>
+  <main class="pt-6">
+    {{{body}}}
+  </main>
+  <footer class="footer is-info">
+    <div class="content has-text-centered">
+      <p>
+        <strong class="quote"></strong>
+      </p>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+  <script src="/js/scripts.js"></script>
+  <script src="/js/logout.js"></script>
+  <script src="/js/modal.js"></script>
 
-      <div class="modal-content">
-        <div class="box">
-          <p class="is-size-4">Write an Alternative Ending or Review</p>
-          <p class="subheading mb-2">All Alternative Endings Have Spoilers  <i class="fas fa-exclamation-triangle"></i></p>
-           <ul class="searchresults"></ul>
-          <ol class="is-size-4 ml-6 mb-4">
-            <li class="movie-img">
-              Insert image here
-            </li>
-            <li>
-              Title:
-            </li>
-            <li>
-              Release Day:
-            </li>
-          </ol>
-          <div class="box has-background-link-light">
-  <form class="new-post-form mb-4">
-    <div class="mb-3">
-      <div class="field">
-        <label for="post-title" class="label is-size-5">Alternative Ending Title</label>
-        <div class="control">
-          <input
-            type="text"
-            name="post-title"
-            class=" input is-info"
-            id="post-title"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="mb-3">
-      <div class="field">
-        <label
-          for="post-content"
-          class="label is-size-5"
-        >Content</label>
-        <div class="control">
-          <textarea
-            type="text"
-            name="post-content"
-            class="form-control post-content mb-3 input is-info"
-            id="post-content"
-          ></textarea>
-        </div>
-        <div class="control">
-          <button type="submit" class="button is-normal is-info">Save My Ending</button>
-          </div>
-      </div>
-    </div>
-  </form>
-   <form class="new-post-form">
-    <div class="mb-3">
-      <div class="field">
-        <label for="post-title" class="label is-size-5" id="original_title">Movie<Title></Title></label>
-        <div class="control">
-          <input
-            type="text"
-            name="post-title"
-            class=" input is-info"
-            id="post-title"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="mb-3">
-      <div class="field">
-        <label
-          for="post-content"
-          class="label is-size-5"
-          id="content"
-        >Review Content</label>
-        <div class="control">
-          <textarea
-            type="text"
-            name="post-content"
-            class="form-control post-content mb-3 input is-info"
-            id="post-content"
-          ></textarea>
-        </div>
-        <div class="control">
-          <button type="submit" class="button is-normal is-info">Save My Review</button>
-          </div>
-      </div>
-    </div>
-  </form>
-</div>
+  {{!-- modal container --}}
+  <div id="modal-js-example" class="modal">
+    
+  </div>
+</body>
 
-        </div>
-      </div>
-
-      <button class="modal-close is-large" aria-label="close"></button>
-    </div>
-  </body>
 </html>
