@@ -2,10 +2,6 @@ const express = require("express");
 const routes = require("./controllers");
 const path = require("path");
 
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
-
 const sequelize = require("./config/connection");
 
 const app = express();
