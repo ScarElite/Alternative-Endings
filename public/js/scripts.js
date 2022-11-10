@@ -86,9 +86,9 @@ inTheatersMovies();
 
 const quotes = [
   "Human beings love stories because they safely show us beginnings, middles and ends. ~A. S. Byatt",
-  "Our story has three parts: a beginning, a middle, and an end. And although this is the way all stories unfold, I still can't believe that ours didn't go on forever. ~Nicholas Sparks",
-  "Every new beginning comes from some other beginning's end. ~Seneca",
-  "There is no real ending. It's just the place where you stop the story. ~Frank Herbert",
+  "Our story has three parts: a beginning, a middle, and an end. And although this is the way all stories unfold, I still can’t believe that ours didn’t go on forever. ~Nicholas Sparks",
+  "Every new beginning comes from some other beginning’s end. ~Seneca",
+  "There is no real ending. It’s just the place where you stop the story. ~Frank Herbert",
   "I always had this idea that you should never give up a happy middle in the hopes of a happy ending, because there is no such thing as a happy ending. Do you know what I mean? There is so much to lose. ~John Green",
   "The opposite of the happy ending is not actually the sad ending–the sad ending is sometimes the happy ending. The opposite of the happy ending is actually the unsatisfying ending. ~Orson Scott Card",
   "Life is not so much about beginnings and endings as it is about going on and on and on. It is about muddling through the middle. ~Anna Quindlen",
@@ -102,30 +102,3 @@ function randomQuoteHandler() {
 
 randomQuoteHandler();
 
-document.querySelector(".moviesearch").addEventListener("keypress", (event) => {
-  if (event.key === "Enter") {
-    let searchterm = document.querySelector(".moviesearch").value.trim();
-
-    let apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&query=${searchterm}&page=1&include_adult=false`;
-
-    fetch(apiUrl)
-      .then(function (response) {
-        response.json().then(function (data) {
-          showSearchResults(data);
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-});
-
-function showSearchResults(data) {
-  let searchResultsEl = document.querySelector(".searchresults");
-
-  for (let i = 0; i < 5; i++) {
-    let searchresultitem = document.createElement("li");
-    searchresultitem.textContent = data.results[i].original_title;
-    searchResultsEl.appendChild(searchresultitem);
-  }
-}
