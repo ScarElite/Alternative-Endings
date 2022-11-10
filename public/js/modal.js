@@ -1,168 +1,154 @@
-const handleModalContent = (layout, data) => {
-  switch (layout) {
-    case "movieinfo":
-      showMovieInfo();
-      break;
+// Chooses which modal to show
+const handleModalContent = (layout, data, choiceIndex, comingsoon) => {
+    switch (layout) {
+        case "movieinfo":
+            showMovieInfo(data, choiceIndex, comingsoon);
+            break;
 
-    case "searchresults":
-      showSearchResults();
-      break;
+        case "closemodal":
+            const modalEl = document.querySelector(".modal");
+            modalEl.classList.remove("is-active");
+            break;
 
-    case "closemodal":
-      modalEl.classList.remove("is-active");
-      break;
-
-    default:
-      break;
-  }
+        default:
+            break;
+    }
 };
 
-const comingSoonTrigger = document.querySelector(".comingsoontriggers");
-comingSoonTrigger.addEventListener("click", (event) => {
-  const isButton = event.target.nodeName === "IMG";
-  if (!isButton) {
-    return;
-  }
+function showMovieInfo(data, choiceIndex, comingsoon) {
 
-  handleModalContent("movieinfo");
-});
+    const modalEl = document.querySelector(".modal");
+    const modalMain = document.querySelector(".modal-card-body");
+    const modalTitle = document.querySelector(".modal-card-title");
+    const modalFooter = document.querySelector(".modal-card-foot");
 
-const inTheatersTrigger = document.querySelector(".intheaterstriggers");
-inTheatersTrigger.addEventListener("click", (event) => {
-  const isButton = event.target.nodeName === "IMG";
-  if (!isButton) {
-    return;
-  }
+    // Modal title
+    modalTitle.textContent = `${data[choiceIndex].original_title}`
 
-  handleModalContent("movieinfo");
-});
-
-const modalBackground = document.querySelector(".modal-background");
-
-// modalBackground.addEventListener("click", handleModalContent("closemodal"));
-
-document.querySelector(".moviesearch").addEventListener("keypress", (event) => {
-  if (event.key === "Enter") {
-    let searchterm = document.querySelector(".moviesearch").value.trim();
-
-    let apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&query=${searchterm}&page=1&include_adult=false`;
-
-    fetch(apiUrl)
-      .then(function (response) {
-        response.json().then(function (data) {
-          showSearchResults(data);
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-});
-
-function showSearchResults(data) {
-  let modalEl = document.querySelector(".modal");
-  const modalContent = `
-<div class="modal-background"></div>
-
-    <div class="modal-content">
-        <div class="box">
-
-            <p class="is-size-4">Write an Alternative Ending or Review</p>
-            <p class="subheading mb-2">All Alternative Endings Have Spoilers <i class="fas fa-exclamation-triangle"></i></p>
-            <ul class="searchresults"></ul>
-
+    // Modal Content
+    modalMain.innerHTML = `
+    <div class="columns">
+        <div class="column is-one-third">
+            <img src="https://image.tmdb.org/t/p/w185${data[choiceIndex].poster_path}" alt="${data[choiceIndex].original_title}"/>
         </div>
-
+        <div class="column">
+            <h1 class="title">${data[choiceIndex].original_title}</h1>
+            <p>${data[choiceIndex].overview}</p>
+        </div>
     </div>
-</div>
+    `;
 
-<button class="modal-close is-large" aria-label="close"></button>
-`;
+    // Modal Footer
 
-  modalEl.innerHTML = modalContent;
+    if (comingsoon) {
+        modalFooter.innerHTML = `
+        <button class="button modalclose">Close</button>
+        <button class="button is-primary tooltip" disabled>
+            Write an alternative ending
+            <span class="tooltiptext">Movie has not yet been released</span>
+        </button>
+        `
+    } else {
+        modalFooter.innerHTML = `
+        <button class="button modalclose">Close</button>
+        <button class="button is-primary altending-btn">Write an alternative ending</button>
+        `
+        document.querySelector(".altending-btn").addEventListener("click", () => {
+            writeAlternativeEnding(data, choiceIndex);
+        })
+    }
 
-  let searchResultsEl = document.querySelector(".searchresults");
+    const modalCloser = document.querySelector(".modal")
+    const closeButtonEl = document.querySelector(".modalclose")
+    document.querySelector(".modal-card").classList.replace("modal-search", "modal-movie")
+    closeButtonEl.addEventListener("click", () => {
+        modalCloser.classList.remove("is-active")
+    })
 
-  for (let i = 0; i < 5; i++) {
-    let searchresultitem = document.createElement("li");
-    searchresultitem.textContent = data.results[i].original_title;
-    searchResultsEl.appendChild(searchresultitem);
-  }
 
-  modalEl.classList.add("is-active");
+
+    modalEl.classList.add("is-active");
+
 }
 
-function showMovieInfo() {
-  let modalEl = document.querySelector(".modal");
-  const modalContent = `
-      <div class="modal-background"></div>
-      <div class="modal-content">
-      <div class="box">
-      <p class="is-size-4">Write an Alternative Ending or Review</p>
-      <p class="subheading mb-2">All Alternative Endings Have Spoilers <i class="fas fa-exclamation-triangle"></i></p>
-      <ul class="searchresults"></ul>
-      <ol class="is-size-4 ml-6 mb-4">
-      <li class="movie-img">
-      Insert image here
-      </li>
-      <li>
-      Title:
-      </li>
-      <li>
-      Release Day:
-      </li>
-      </ol>
-      <div class="box has-background-link-light">
-      <form class="new-post-form mb-4">
-      <div class="mb-3">
-        <div class="field">
-          <label for="post-title" class="label is-size-5">Alternative Ending Title</label>
-          <div class="control">
-            <input type="text" name="post-title" class=" input is-info" id="post-title" />
-          </div>
-        </div>
-      </div>
-      <div class="mb-3">
-        <div class="field">
-          <label for="post-content" class="label is-size-5">Content</label>
-          <div class="control">
-            <textarea type="text" name="post-content" class="form-control post-content mb-3 input is-info"
-              id="post-content"></textarea>
-          </div>
-          <div class="control">
-            <button type="submit" class="button is-normal is-info">Save My Ending</button>
-          </div>
-        </div>
-      </div>
-      </form>
-      <form class="new-post-form">
-      <div class="mb-3">
-        <div class="field">
-          <label for="post-title" class="label is-size-5" id="original_title">Movie<Title></Title></label>
-          <div class="control">
-            <input type="text" name="post-title" class=" input is-info" id="post-title" />
-          </div>
-        </div>
-      </div>
-      <div class="mb-3">
-        <div class="field">
-          <label for="post-content" class="label is-size-5" id="content">Review Content</label>
-          <div class="control">
-            <textarea type="text" name="post-content" class="form-control post-content mb-3 input is-info"
-              id="post-content"></textarea>
-          </div>
-          <div class="control">
-            <button type="submit" class="button is-normal is-info">Save My Review</button>
-          </div>
-        </div>
-      </div>
-      </form>
-      </div>
-      </div>
-      </div>
-      <button class="modal-close is-large" aria-label="close"></button>
-      `;
+function writeAlternativeEnding(data, choiceIndex) {
+    const modalEl = document.querySelector(".modal");
+    const modalMain = document.querySelector(".modal-card-body");
+    const modalTitle = document.querySelector(".modal-card-title");
+    const modalFooter = document.querySelector(".modal-card-foot");
 
-  modalEl.innerHTML = modalContent;
-  modalEl.classList.add("is-active");
+    // Modal title
+    modalTitle.innerHTML = `Alternative Ending for <span class="has-text-weight-semibold">${data[choiceIndex].original_title}</span>`
+
+    // Modal Content
+    modalMain.innerHTML = `
+    <div class="columns">
+        <div class="column is-one-third">
+            <img src="https://image.tmdb.org/t/p/w185${data[choiceIndex].poster_path}" alt="${data[choiceIndex].original_title}"/>
+        </div>
+        <div class="column">
+            <form action="submit" class="altendingform">
+                <div class="field">
+                    <label class="label">Title</label>
+                    <div class="control">
+                        <input class="input alttitle" type="text" placeholder="Title for Your Ending">
+                    </div>
+                </div>
+  
+                <div class="field">
+                    <label class="label">Your Ending</label>
+                    <div class="control">
+                        <textarea class="textarea altending" placeholder="Write your Alternative Ending here"></textarea>
+                    </div>
+                </div>
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-link">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    `;
+
+    // Modal Footer
+
+    modalFooter.innerHTML = `
+        <button class="button modalclose">Cancel</button>
+    `
+
+    document.querySelector(".altendingform").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        let title = document.querySelector(".altTitle").value.trim();
+        let content = document.querySelector(".altending").value.trim();
+        let movie_id = data[choiceIndex].id
+
+        const response = await fetch("/api/posts", {
+            method: "POST",
+            body: JSON.stringify({
+              title,
+              content,
+              movie_id
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          if (response.ok) {
+            // document.location.replace("/dashboard");
+            console.log("ok")
+          } else {
+            alert(response.statusText);
+          }
+    })
+
+    const modalCloser = document.querySelector(".modal")
+    const closeButtonEl = document.querySelector(".modalclose")
+    const modalSEl = document.querySelector(".modal-card").classList.replace("modal-search", "modal-movie")
+    closeButtonEl.addEventListener("click", () => {
+        modalCloser.classList.remove("is-active")
+    })
+
+    modalEl.classList.add("is-active");
 }
