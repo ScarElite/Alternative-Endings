@@ -1,5 +1,6 @@
 function upcomingMovies() {
   const apiUrl =
+    // Will be a new way to call the api and use a new apiKey. Will call through the backend so we can use process.env
     "https://api.themoviedb.org/3/movie/upcoming?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&page=1";
 
   fetch(apiUrl)
@@ -42,7 +43,7 @@ function createUpcomingMovies(data) {
 }
 
 const inTheatersMovies = () => {
-  const apiUrl =
+  const apiUrl = // Will be a new way to call the api and use a new apiKey. Will call through the backend so we can use process.env
     "https://api.themoviedb.org/3/movie/now_playing?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&page=1";
 
   fetch(apiUrl)
