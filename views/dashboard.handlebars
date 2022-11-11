@@ -1,2 +1,141 @@
-<h1>Welcome to the Dashboard!</h1>
-<h2>What are you doing here?!?!</h2>
+<div class="pt-6">
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-primary">
+    <h1 class="title mb-4">Hello {{username}}</h1>
+    <h2 class="title mb-4">Create a new post!</h2>
+    <div class="box has-background-link-light">
+  <form class="new-post-form">
+    <div class="mb-3">
+      <div class="field">
+        <label for="post-title" class="label is-size-5">Title</label>
+        <div class="control">
+          <input
+            type="text"
+            name="post-title"
+            class=" input is-info"
+            id="post-title"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="field">
+        <label
+          for="post-content"
+          class="label is-size-5"
+        >Content</label>
+        <div class="control">
+          <textarea
+            type="text"
+            name="post-content"
+            class="form-control post-content mb-3 input is-info"
+            id="post-content"
+          ></textarea>
+        </div>
+        <div class="control">
+          <button type="submit" class="button is-normal is-info">Save My Ending</button>
+          </div>
+      </div>
+    </div>
+  </form>
+</div>
+        </article>
+        <article class="tile is-child notification is-warning">
+          <p class="title">...tiles</p>
+          <p class="subtitle">Bottom tile</p>
+          <div class="col-12 mb-4 message is-link mb-4">
+  <h2 class="mb-4 is-size-3 message-header has-text-black">Your Posts
+    <i class="fa-solid fa-heart"></i>
+  </h2>
+</div>
+{{#if posts.length}}
+  <div class="row message-body has-background-link-light">
+    <div class="col-12">
+    <div class="list-group">
+        {{#each posts as |post|}}
+        {{>post-info post}}
+        {{/each}}
+    </div>
+    </div>
+  </div>
+  {{else}}
+  <div class="row">
+    <div class="col-12">
+    <p>You do not have any posts</p>
+    </div>
+  </div>
+{{/if}}
+</div>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-info">
+          <p class="title">Middle tile</p>
+          <p class="subtitle">With an image</p>
+        <div class="box has-background-link-light">
+  <form class="new-post-form">
+    <div class="mb-3">
+      <div class="field">
+        <label for="post-title" class="label is-size-5">Title</label>
+        <div class="control">
+          <input
+            type="text"
+            name="post-title"
+            class=" input is-info"
+            id="post-title"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="field">
+        <label
+          for="post-content"
+          class="label is-size-5"
+        >Content</label>
+        <div class="control">
+          <textarea
+            type="text"
+            name="post-content"
+            class="form-control post-content mb-3 input is-info"
+            id="post-content"
+          ></textarea>
+        </div>
+        <div class="control">
+          <button type="submit" class="button is-normal is-info">Save My Ending</button>
+          </div>
+      </div>
+    </div>
+  </form>
+      </article>
+</div>
+      </div>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child notification is-danger">
+        <p class="title">Wide tile</p>
+        <p class="subtitle">Aligned with the right tile</p>
+        <div class="content">
+          <!-- Content -->
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-success">
+      <div class="content">
+        <p class="title">Tall tile</p>
+        <p class="subtitle">With even more content</p>
+        <div class="content">
+          <!-- Content -->
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+</div>
+
+<script src="/js/add-post.js"></script>

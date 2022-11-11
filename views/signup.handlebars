@@ -1,0 +1,49 @@
+<div class="">
+  <div class="columns is-centered is-vcentered fullheight login-pic py-6">
+    <div class="column box is-two-fifths p-6">
+      <h1 class="title">Sign Up</h1>
+      <p class="subtitle">Already have an account?
+        <a href="/login">Login instead</a>.</p>
+      <form class="signup-form">
+        <div class="mb-3">
+          <div class="field">
+            <label for="username-signup" class="label">Username
+              <i class="fa-solid fa-user"></i></label>
+            <div class="control">
+              <input type="text" class="input" id="username-signup" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="email-signup" class="label">Email Address
+              <i class="fa-sharp fa-solid fa-envelope"></i></label>
+            <div class="control">
+              <input
+                type="email"
+                class="input"
+                id="email-signup"
+                aria-describedby="emailHelp"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="field">
+            <label for="password-signup" class="label">Password
+              <i class="fa-solid fa-lock"></i></label>
+            <input type="password" class="input" id="password-signup" />
+            <div class="control">
+            </div>
+          </div>
+        </div>
+        <progress class="progress is-danger mb-3" max="100">30%</progress>
+        <div class="field">
+          <div class="control">
+            <button type="submit" class="button is-link" id="signup-button">Sign
+              Up</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="/js/signup.js"></script>
