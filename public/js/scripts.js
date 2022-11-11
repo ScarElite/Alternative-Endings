@@ -1,4 +1,7 @@
-const apiData = require("../../controllers/test");
+let moviedata = {
+  upcoming: [],
+  intheaters: [],
+};
 
 function upcomingMovies() {
   // const apiUrl =
@@ -15,9 +18,19 @@ function upcomingMovies() {
   //   .catch((err) => {
   //     console.log(err);
   //   });
+  const apiUrl =
+    "https://api.themoviedb.org/3/movie/upcoming?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&page=1";
 
-  console.log(apiData);
-  // createUpcomingMovies();
+  fetch(apiUrl)
+    .then(function (response) {
+      response.json().then(function (data) {
+        createUpcomingMovies(data);
+        moviedata.upcoming = data.results;
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 function createUpcomingMovies(data) {
@@ -35,6 +48,7 @@ function createUpcomingMovies(data) {
       class="movieimg"
       src="https://image.tmdb.org/t/p/w500${data.results[i].poster_path}"
       alt="1"
+      data-index="${i}"
     />`;
     movieSliderEl.appendChild(movieItemEl);
   }
@@ -51,10 +65,12 @@ function createUpcomingMovies(data) {
 const inTheatersMovies = () => {
   const apiUrl = // Will be a new way to call the api and use a new apiKey. Will call through the backend so we can use process.env
     "https://api.themoviedb.org/3/movie/now_playing?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&page=1";
+
   fetch(apiUrl)
     .then(function (response) {
       response.json().then(function (data) {
         createInTheatersMovies(data);
+        moviedata.intheaters = data.results;
       });
     })
     .catch((err) => {
@@ -73,6 +89,7 @@ const createInTheatersMovies = (data) => {
       class="movieimg"
       src="https://image.tmdb.org/t/p/w500${data.results[i].poster_path}"
       alt="1"
+      data-index="${i}"
     />`;
     movieSliderEl.appendChild(movieItemEl);
   }
@@ -87,111 +104,33 @@ const createInTheatersMovies = (data) => {
   });
 };
 
-upcomingMovies();
-inTheatersMovies();
-
-const quotes = [
-  "Human beings love stories because they safely show us beginnings, middles and ends. ~A. S. Byatt",
-  "Our story has three parts: a beginning, a middle, and an end. And although this is the way all stories unfold, I still can’t believe that ours didn’t go on forever. ~Nicholas Sparks",
-  "Every new beginning comes from some other beginning’s end. ~Seneca",
-  "There is no real ending. It’s just the place where you stop the story. ~Frank Herbert",
-  "I always had this idea that you should never give up a happy middle in the hopes of a happy ending, because there is no such thing as a happy ending. Do you know what I mean? There is so much to lose. ~John Green",
-  "The opposite of the happy ending is not actually the sad ending–the sad ending is sometimes the happy ending. The opposite of the happy ending is actually the unsatisfying ending. ~Orson Scott Card",
-  "Life is not so much about beginnings and endings as it is about going on and on and on. It is about muddling through the middle. ~Anna Quindlen",
-  "The last thing one settles in writing a book is what one should put in first. ~Pascal",
-];
-
-function randomQuoteHandler() {
-  const quoteEl = document.querySelector(".quote");
-  quoteEl.textContent = quotes[Math.floor(Math.random() * quotes.length)];
-}
-
-randomQuoteHandler();
-
-document.addEventListener("DOMContentLoaded", () => {
-  // Functions to open and close a modal
-  function openModal($el) {
-    $el.classList.add("is-active");
-  }
-
-  function closeModal($el) {
-    $el.classList.remove("is-active");
-  }
-
-  function closeAllModals() {
-    (document.querySelectorAll(".modal") || []).forEach(($modal) => {
-      closeModal($modal);
-    });
-  }
-
-  // Add a click event on buttons to open a specific modal
-  (document.querySelectorAll(".js-modal-trigger") || []).forEach(($trigger) => {
-    const modal = $trigger.dataset.target;
-    const $target = document.getElementById(modal);
-
-    $trigger.addEventListener("click", () => {
-      openModal($target);
-    });
-  });
-
-  // Add a click event on various child elements to close the parent modal
-  (
-    document.querySelectorAll(
-      ".modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button"
-    ) || []
-  ).forEach(($close) => {
-    const $target = $close.closest(".modal");
-
-    $close.addEventListener("click", () => {
-      closeModal($target);
-    });
-  });
-
-  // Add a keyboard event to close all modals
-  document.addEventListener("keydown", (event) => {
-    const e = event || window.event;
-
-    if (e.keyCode === 27) {
-      // Escape key
-      closeAllModals();
-    }
-  });
-});
-
-const slider = document.querySelector(".modaltriggers");
-slider.addEventListener("click", (event) => {
+const comingSoonTrigger = document.querySelector(".comingsoontriggers");
+comingSoonTrigger.addEventListener("click", (event) => {
   const isButton = event.target.nodeName === "IMG";
   if (!isButton) {
     return;
   }
-  const modalEl = document.querySelector(".modal");
-  modalEl.classList.add("is-active");
+
+  let choiceIndex = event.target.getAttribute("data-index");
+
+  // Chooses the layout of the modal, passes in the in theaters movies into it as well as the index of the item that was clicked
+  // and passes the value true to make sure that the write an alternative ending -button is disabled.
+  handleModalContent("movieinfo", moviedata.upcoming, choiceIndex, true);
 });
 
-document.querySelector(".moviesearch").addEventListener("keypress", (event) => {
-  if (event.key === "Enter") {
-    let searchterm = document.querySelector(".moviesearch").value.trim();
-
-    let apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&query=${searchterm}&page=1&include_adult=false`;
-
-    fetch(apiUrl)
-      .then(function (response) {
-        response.json().then(function (data) {
-          showSearchResults(data);
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+const inTheatersTrigger = document.querySelector(".intheaterstriggers");
+inTheatersTrigger.addEventListener("click", (event) => {
+  const isButton = event.target.nodeName === "IMG";
+  if (!isButton) {
+    return;
   }
+
+  let choiceIndex = event.target.getAttribute("data-index");
+
+  // Chooses the layout of the modal, passes in the in theaters movies into it as well as the index of the item that was clicked
+  // and passes the value false to make sure that the write an alternative ending -button is enabled.
+  handleModalContent("movieinfo", moviedata.intheaters, choiceIndex, false);
 });
 
-function showSearchResults(data) {
-  let searchResultsEl = document.querySelector(".searchresults");
-
-  for (let i = 0; i < 5; i++) {
-    let searchresultitem = document.createElement("li");
-    searchresultitem.textContent = data.results[i].original_title;
-    searchResultsEl.appendChild(searchresultitem);
-  }
-}
+upcomingMovies();
+inTheatersMovies();

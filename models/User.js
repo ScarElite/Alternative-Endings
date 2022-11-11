@@ -12,8 +12,6 @@ User.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      // type: DataTypes.UUID,
-      // defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
@@ -22,14 +20,6 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // firstName: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
-    // lastName: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
     email: {
       type: DataTypes.STRING,
       allowNull: false,

@@ -19,6 +19,10 @@ Post.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    movie_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
