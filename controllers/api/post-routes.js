@@ -4,7 +4,7 @@ const withAuth = require("../../utils/auth");
 
 router.get("/", (req, res) => {
   Post.findAll({
-    attributes: ["id", "title", "content", "created_at"],
+    attributes: ["id", "title", "content", "movie_id", "created_at"],
     order: [["created_at", "DESC"]],
     include: [
       {
@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   Post.findOne({
     where: { id: req.params.id },
-    attributes: ["id", "title", "content", "created_at"],
+    attributes: ["id", "title", "content", "movie_id", "created_at"],
     include: [
       {
         model: User,
@@ -57,6 +57,7 @@ router.post("/", (req, res) => {
     title: req.body.title,
     content: req.body.content,
     user_id: req.session.user_id,
+    movie_id: req.body.movie_id
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
