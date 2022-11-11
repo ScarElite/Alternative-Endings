@@ -1,20 +1,37 @@
-<div class="row">
-  <h2>{{post.title}}</h2>
-</div>
-<div class="row">
-  <p>{{post.content}}</p>
-</div>
-<div class="row">
-  <p>Posted by {{post.user.username}} on {{format_date post.created_at}}</p>
-</div>
-{{#if post.comments.length}}
+<div class="container mt-6">
+  <h1 class="title">
+    {{post.title}}
+  </h1>
+  <p class="subtitle">
+    An Alternative Ending by for <strong>{{post.movie_id}}</strong><br>
+    <span class="is-size-6">by {{post.user.username}}, posted on {{format_date post.created_at}}
+  </p>
+  </p>
+  <div class="columns">
+    <div class="column">
+      <p>{{post.content}}</p>
+    </div>
+    <div class="column">
+      <div class="is-flex searchresultsitem p-3">
+        <div class="mr-3 movieposter">
+          {{!-- movie poster goes here --}}
+        </div>
+        <div class="is-align-self-center searchresultsitemtitle p-4">
+          <p class="movietitle has-text-weight-bold is-size-5 mb-3">Title</p>
+          <p class="moviedescription"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{#if post.comments.length}}
   <hr />
   <div class="row">
     <p>{{post.comments.length}} comment(s):</p>
   </div>
-{{/if}}
-<div class="list-group mb-3">
-  {{#each post.comments}}
+  {{/if}}
+  <div class="list-group mb-3">
+    {{#each post.comments}}
     <div class="list-group-item flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <small class="text-muted"><strong>{{user.username}}</strong>
@@ -23,9 +40,9 @@
       </div>
       <p class="mb-1">{{comment_body}}</p>
     </div>
-  {{/each}}
-</div>
-{{#if loggedIn}}
+    {{/each}}
+  </div>
+  {{#if loggedIn}}
   <div class="row mb-3">
     <div class="col">
       <p class="lead">Add a comment</p>
@@ -35,7 +52,14 @@
       </form>
     </div>
   </div>
-{{/if}}
+  {{/if}}
+
+</div>
+
 {{#if loggedIn}}
-  <script src="/assets/js/comment.js"></script>
+<script src="/js/comment.js"></script>
 {{/if}}
+<script>
+  let postMovieId = {{post.movie_id}}
+</script>
+<script src="/js/getmoviedata.js"></script>
