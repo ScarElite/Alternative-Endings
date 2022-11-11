@@ -1,120 +1,107 @@
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alternate Endings</title>
-  <link rel="stylesheet" href="/stylesheets/style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alternate Endings</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css"
+    />
+  </head>
 
-<body>
-  <nav>
-    <div class="is-flex is-justify-content-space-between is-align-content-center">
-      <div class="is-flex is-align-items-center">
-        <a class="ae-title" href="/">
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item is-size-1" href="#">
           Alternate Endings
         </a>
-        <div class="is-flex ml-6">
-          <a class="button mr-3" href="/">Home</i></a>
-          {{#if loggedIn}}
-          <a class="button" href="/dashboard">Dashboard</a>
-          {{/if}}
-        </div>
-      </div>
-      <div class="is-flex is-align-items-center nav-center">
-        <div class="field menu-search">
-          <p class="control has-icons-left has-icons-right">
-            <input class="input moviesearch" type="text" placeholder="Search for movies" />
-            <span class="icon is-small is-left">
-              <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-            </span>
-          </p>
-        </div>
+
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
       </div>
 
-      <div class="is-flex is-align-items-center">
-        <div class="buttons">
-          {{#if loggedIn}}
-          <a class="button is-outlined logout-btn" href="/logout">
-            <strong>Logout</strong>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item">
+            Home
           </a>
-          {{else}}
-          <a class="button is-outlined" href="/signup">
-            <strong>Signup</strong>
-          </a>
-          <a class="button has-background-danger" href="/login">
-            <strong>Log-in</strong>
+
+          <a class="navbar-item">
+            Dashboard
           </a>
         </div>
-        {{/if}}
+        <div class="navbar-search">
+          <div class="navbar-item">
+            <div class="field">
+              <p class="control has-icons-left has-icons-right">
+                <input
+                  class="input mt-4"
+                  type="text"
+                  placeholder="Search for movies"
+                />
+                <span class="icon is-small is-left mt-3">
+                  <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                </span>
+              </p>
+            </div>
+          </div>
+
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary">
+                <strong>Sign up</strong>
+              </a>
+              <a class="button is-light">
+                Log in
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </nav>
-  <main class="pt-6">
-
-    {{{body}}}
-  </main>
-
-  <footer class="footer is-info">
-    <div class="content has-text-centered">
-      <p>
-        <strong class="quote"></strong>
-      </p>
-    </div>
-  </footer>
-  {{!-- modal container --}}
-  <div id="modal-js-example" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-search modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title"></p>
-      </header>
-      <section class="modal-card-body">
-        {{!-- modal content --}}
-      </section>
-      <footer class="modal-card-foot is-flex is-justify-content-space-between">
-
-      </footer>
-    </div>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
-  {{#if loggedIn}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
-  <script>
-    const quotes = [
-      "Human beings love stories because they safely show us beginnings, middles and ends. ~A. S. Byatt",
-      "Our story has three parts: a beginning, a middle, and an end. And although this is the way all stories unfold, I still can’t believe that ours didn’t go on forever. ~Nicholas Sparks",
-      "Every new beginning comes from some other beginning’s end. ~Seneca",
-      "There is no real ending. It’s just the place where you stop the story. ~Frank Herbert",
-      "I always had this idea that you should never give up a happy middle in the hopes of a happy ending, because there is no such thing as a happy ending. Do you know what I mean? There is so much to lose. ~John Green",
-      "The opposite of the happy ending is not actually the sad ending–the sad ending is sometimes the happy ending. The opposite of the happy ending is actually the unsatisfying ending. ~Orson Scott Card",
-      "Life is not so much about beginnings and endings as it is about going on and on and on. It is about muddling through the middle. ~Anna Quindlen",
-      "The last thing one settles in writing a book is what one should put in first. ~Pascal",
-    ];
-
-    function randomQuoteHandler() {
-      const quoteEl = document.querySelector(".quote");
-      quoteEl.textContent = quotes[Math.floor(Math.random() * quotes.length)];
-    }
-
-    randomQuoteHandler();
-  </script>
-
-  <script src="/js/search.js"></script>
-  {{#if loggedIn}}
-  <script src="/js/modal.js"></script>
-  {{else}}
-  <script src="/js/modal-loggedout.js"></script>
-  {{/if}}
-</body>
-
+    </nav>
+    <main>
+      {{{body}}}
+    </main>
+    <footer class="footer is-info">
+      <div class="content has-text-centered">
+        <p>
+          <strong class="quote">Thank you for visiting!</strong>
+        </p>
+      </div>
+    </footer>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+      integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"
+    ></script>
+    <script src="/javascript/scripts.js"></script>
+  </body>
 </html>
