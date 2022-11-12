@@ -1,14 +1,15 @@
 <div class="dashboard-pic">
 <div class="container mt-6 p-4 post-blur">
-   <div class="title"><h1 class="title mb-4 mt-6">Hello {{username}}</h1></div>
-   <div class="subtitle"><h2 class="title mb-4">Welcome Back!</h2></div>
-   <h2 class="mb-4 is-size-3 message-header has-text-black has-background-danger">Your Posts
-    <i class="fa-solid fa-heart"></i>
+   <div class="title"><h1 class="title mb-4 mt-6"></h1></div>
+   <div class="subtitle"><h2 class="title mb-4"></h2></div>
+   <h2 class="mb-4 is-size-3 message-header has-text-black has-background-danger">Hello {{username}} Welcome Back!
+    <iframe src="https://embed.lottiefiles.com/animation/33186"></iframe><i class="fa-solid fa-heart"></i>
    </h2>
    <div>
 
   {{#if posts.length}}
   <div class="notification is-danger is-light">
+    <div class="title">Your Posts</div>
     <div class="heading">
     <div class="cell mb-4 is-size-4">
         {{#each posts as |post|}}
