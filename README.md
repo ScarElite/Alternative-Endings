@@ -6,6 +6,14 @@
 
 ## Purpose
 
+Have you ever watched a movie that takes you on a captivating journey and keeps you invested throughout its duration only to leave you devastated because of its lackluster ending?
+
+As a movie buff and creative write, I would like:
+
+- I would like to know the upcoming and current movies in theaters.
+- I would like to review movies and give them alternative endings!
+- I want users to comment on my alternative ending and share their perspective.
+
 ## Requirements
 
 - Use Node.js and Express.js to create RESTful API
@@ -21,6 +29,14 @@
 - Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.)
 - Have a quality README (with unique name, description, technologies used, screenshot, and links to deployed application)
 - Include this project in our individual portfolios.
+
+## Project Presentation
+
+Made with ❤️ by: Teresa Hartsfield
+
+<img src="./public/assets/img/readme/presentation.png" alt="presentation-slide" height="300px"/>
+
+https://www.beautiful.ai/player/-NFnbv3CVMnH8FyXqtZc
 
 ## Git Hub
 
