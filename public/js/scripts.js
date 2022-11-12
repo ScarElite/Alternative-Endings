@@ -4,20 +4,6 @@ let moviedata = {
 };
 
 function upcomingMovies() {
-  // const apiUrl =
-  //   // Will be a new way to call the api and use a new apiKey. Will call through the backend so we can use process.env
-  //   "https://api.themoviedb.org/3/movie/upcoming?api_key=" +
-  //   apiKey +
-  //   "&language=en-US&page=1";
-  // fetch(apiUrl)
-  //   .then(function (response) {
-  //     response.json().then(function (data) {
-  //       createUpcomingMovies(data);
-  //     });
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
   const apiUrl =
     "https://api.themoviedb.org/3/movie/upcoming?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&page=1";
 
@@ -132,5 +118,18 @@ inTheatersTrigger.addEventListener("click", (event) => {
   handleModalContent("movieinfo", moviedata.intheaters, choiceIndex, false);
 });
 
+const topBoxOffice = () => {
+  console.log("Top Box Office Movies!");
+
+  fetch("/test")
+    .then((data) => {
+      console.log("***************************************************", data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 upcomingMovies();
 inTheatersMovies();
+topBoxOffice();
