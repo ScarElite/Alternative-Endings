@@ -1,3 +1,10 @@
+:root {
+  --primary-color: #3204fdba;
+  --secondary-color: #763e9bcc;
+  --tertiary-color: #f72585;
+  --quaternary-color: #4361ee;
+}
+
 .movieimg {
   height: 250px;
 }
@@ -34,16 +41,24 @@
 }
 
 .login-pic {
-  background: linear-gradient(to top, #3204fdba, #763e9bcc),
+  background: linear-gradient(
+      to top,
+      var(--primary-color),
+      var(--secondary-color)
+    ),
     url(/assets/img/stock/popcorn1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 .dashboard-pic {
-  background: linear-gradient(to top, #3204fdba, #763e9bcc),
-    url(/assets/img/stock/film.jpg);
+  background: url(/assets/img/stock/popcorn-full.jpg);
+  backdrop-filter: blur(15px);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.post-img {
+  background: url(/assets/img/stock/paper.jpg);
 }
 
 .fullheight {
@@ -83,11 +98,11 @@ nav {
 }
 
 .comingsoon {
-  background-color: #3204fd;
+  background-color: var(--quaternary-color);
 }
 
 .intheaters {
-  background-color: #763e9b;
+  background-color: var(--quaternary-color);
 }
 
 .tns-nav {
@@ -95,7 +110,7 @@ nav {
 }
 
 .modal {
-  z-index: 999!important;
+  z-index: 999 !important;
 }
 
 .tooltip {
@@ -140,9 +155,9 @@ nav {
   border-radius: 10px;
   margin-bottom: 20px;
   overflow: hidden;
-  box-shadow: -1px 5px 14px 1px rgba(0,0,0,0.21);
-  -webkit-box-shadow: -1px 5px 14px 1px rgba(0,0,0,0.21);
-  -moz-box-shadow: -1px 5px 14px 1px rgba(0,0,0,0.21);
+  box-shadow: -1px 5px 14px 1px rgba(0, 0, 0, 0.21);
+  -webkit-box-shadow: -1px 5px 14px 1px rgba(0, 0, 0, 0.21);
+  -moz-box-shadow: -1px 5px 14px 1px rgba(0, 0, 0, 0.21);
 }
 
 .searchresultsitem:last-child {
@@ -154,7 +169,7 @@ nav {
 }
 
 .modal-search {
-  width: 900px!important;
+  width: 900px !important;
 }
 
 .modal-movie {
@@ -167,7 +182,7 @@ nav {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   line-clamp: 4;
-  -webkit-box-orient: vertical
+  -webkit-box-orient: vertical;
 }
 
 .movieposterimg {
@@ -177,7 +192,7 @@ nav {
 
 @media screen and (max-width: 1000px) {
   .modal-search {
-    width: calc(100vw - 40px)!important;
+    width: calc(100vw - 40px) !important;
   }
 
   .searchoverview {
