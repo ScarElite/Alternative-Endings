@@ -1,8 +1,8 @@
 # Project 2 - Alternative Endings
 
-<img src="./assets/img/readme/login.png" alt="login-page" height="300px"/>
-<img src="./assets/img/readme/signup.png" alt="signup-page" height="300px"/>
-<img src="./assets/img/readme/searchmodal.png" alt="search box" height="300px"/>
+<img src="./public/assets/img/readme/login.png" alt="login-page" height="300px"/>
+<img src="./public/assets/img/readme/signup.png" alt="signup-page" height="300px"/>
+<img src="./public/assets/img/readme/searchmodal.png" alt="search box" height="300px"/>
 
 ## Purpose
 
