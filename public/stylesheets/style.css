@@ -57,7 +57,13 @@
   background-size: cover;
 }
 
-.post-img {
+.post-blur {
+  backdrop-filter: blur(15px);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.post-indiv {
   background: url(/assets/img/stock/paper.jpg);
 }
 
@@ -96,14 +102,6 @@ nav {
   border: none;
   background: none;
 }
-
-/* .comingsoon {
-  background-color: var(--quaternary-color);
-}
-
-.intheaters {
-  background-color: var(--quaternary-color);
-} */
 
 .tns-nav {
   display: none !important;
