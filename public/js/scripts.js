@@ -4,19 +4,37 @@ let moviedata = {
 };
 
 function upcomingMovies() {
-  const apiUrl =
-    "https://api.themoviedb.org/3/movie/upcoming?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&page=1";
+  // const apiUrl =
+  //   "https://api.themoviedb.org/3/movie/upcoming?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&page=1";
 
-  fetch(apiUrl)
-    .then(function (response) {
-      response.json().then(function (data) {
-        createUpcomingMovies(data);
-        moviedata.upcoming = data.results;
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  // fetch(apiUrl)
+  //   .then(function (response) {
+  //     response.json().then(function (data) {
+  //       createUpcomingMovies(data);
+  //       moviedata.upcoming = data.results;
+  //     });
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+
+  console.log("Upcoming Movies!");
+
+  const api_url = "/test/upcoming";
+
+  // Defining async function
+  async function getapi(url) {
+    // Storing response
+    const response = await fetch(url);
+
+    // Storing data in form of JSON
+    var data = await response.json();
+    console.log("SHOW ME UPCOMING MOVIES", data);
+    createUpcomingMovies(data);
+    moviedata.upcoming = data.results;
+  }
+  // Calling that async function
+  getapi(api_url);
 }
 
 function createUpcomingMovies(data) {
