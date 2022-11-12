@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-router.get("/", (req, res) => {
+router.get("/something", (req, res) => {
   const apiUrl =
     "https://api.themoviedb.org/3/movie/popular?api_key=" +
     process.env.API_KEY +

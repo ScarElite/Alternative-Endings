@@ -121,13 +121,19 @@ inTheatersTrigger.addEventListener("click", (event) => {
 const topBoxOffice = () => {
   console.log("Top Box Office Movies!");
 
-  fetch("/test")
-    .then((data) => {
-      console.log("***************************************************", data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  const api_url = "/test/something";
+
+  // Defining async function
+  async function getapi(url) {
+    // Storing response
+    const response = await fetch(url);
+
+    // Storing data in form of JSON
+    var data = await response.json();
+    console.log("SHOW ME THE DATA", data);
+  }
+  // Calling that async function
+  getapi(api_url);
 };
 
 upcomingMovies();
