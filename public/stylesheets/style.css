@@ -97,13 +97,13 @@ nav {
   background: none;
 }
 
-.comingsoon {
+/* .comingsoon {
   background-color: var(--quaternary-color);
 }
 
 .intheaters {
   background-color: var(--quaternary-color);
-}
+} */
 
 .tns-nav {
   display: none !important;
