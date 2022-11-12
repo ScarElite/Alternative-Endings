@@ -1,28 +1,51 @@
-# Project 2 -
+# Project 2 - Alternative Endings
 
-<img src="./assets/img/" alt="" height="300px"/>
+<img src="./assets/img/readme/login.png" alt="login-page" height="300px"/>
+<img src="./assets/img/readme/signup.png" alt="signup-page" height="300px"/>
+<img src="./assets/img/readme/searchmodal.png" alt="search box" height="300px"/>
 
 ## Purpose
 
 ## Requirements
 
-## Screencastify
-
-## Website
+- Use Node.js and Express.js to create RESTful API
+- Use a template engine such as Handlebars.js
+- Use MYSQL and the Sequelize ORM for the database
+- Have both GET and POST routes for retrieving and adding new data
+- Have a polished UI
+- Be responsive
+- Be interactive (ie. accepts and respond to user input)
+- Must have a folder structure that meets MVC paradigm
+- Must include authentication (cooties and express-sessions)
+- Must protect API keys and sensitive information with environment variables
+- Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.)
+- Have a quality README (with unique name, description, technologies used, screenshot, and links to deployed application)
+- Include this project in our individual portfolios.
 
 ## Git Hub
 
+https://github.com/ScarElite/Alternative-Endings
+
 ## Heroku Deployment
 
-https://git.heroku.com/warm-oasis-08515.git
+https://sheltered-citadel-89762.herokuapp.com/
 
 ## Installations
 
 - npm i node
-- npm install express
+- npm i express
+- npm i dotenv
 - npm i mysql
-- npm install handlebars
+- npm i mysql2
+- npm i sequelize
+- npm i express-handlebars
+- npm i handlebars
+- npm i express-session
 - npm i bootstrap
+- npm i equalizer
+- npm i nodemailer
+- npm i bcrypt
+- npm i connect-session-sequelize
 
 ## Contribution
 
