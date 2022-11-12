@@ -4,23 +4,9 @@ let moviedata = {
 };
 
 function upcomingMovies() {
-  // const apiUrl =
-  //   "https://api.themoviedb.org/3/movie/upcoming?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&page=1";
-
-  // fetch(apiUrl)
-  //   .then(function (response) {
-  //     response.json().then(function (data) {
-  //       createUpcomingMovies(data);
-  //       moviedata.upcoming = data.results;
-  //     });
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-
   console.log("Upcoming Movies!");
 
-  const api_url = "/test/upcoming";
+  const api_url = "/movie-data/upcoming";
 
   // Defining async function
   async function getapi(url) {
@@ -40,10 +26,6 @@ function upcomingMovies() {
 function createUpcomingMovies(data) {
   var movieSliderEl = document.querySelector(".movieslider");
   for (i = 2; i < 10; i++) {
-    // movieImgEl = $("<img></img>");
-    // movieImgEl.attr("class", "movieimg");
-    // movieImgEl.attr("src", "/assets/img/movies/1.jpeg");
-    // movieSliderEl.append(movieImgEl);
     const movieItemEl = document.createElement("button");
     movieItemEl.classList.add("js-modal-trigger", "button-reset");
     movieItemEl.setAttribute("data-target", "modal-js-example");
@@ -67,19 +49,23 @@ function createUpcomingMovies(data) {
 }
 
 const inTheatersMovies = () => {
-  const apiUrl = // Will be a new way to call the api and use a new apiKey. Will call through the backend so we can use process.env
-    "https://api.themoviedb.org/3/movie/now_playing?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&page=1";
+  console.log("Upcoming Movies!");
 
-  fetch(apiUrl)
-    .then(function (response) {
-      response.json().then(function (data) {
-        createInTheatersMovies(data);
-        moviedata.intheaters = data.results;
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  const api_url = "/movie-data/theaters";
+
+  // Defining async function
+  async function getapi(url) {
+    // Storing response
+    const response = await fetch(url);
+
+    // Storing data in form of JSON
+    var data = await response.json();
+    console.log("SHOW ME IN THEATERS MOVIES", data);
+    createInTheatersMovies(data);
+    moviedata.upcoming = data.results;
+  }
+  // Calling that async function
+  getapi(api_url);
 };
 
 const createInTheatersMovies = (data) => {
@@ -139,7 +125,7 @@ inTheatersTrigger.addEventListener("click", (event) => {
 const topBoxOffice = () => {
   console.log("Top Box Office Movies!");
 
-  const api_url = "/test/something";
+  const api_url = "/movie-data/something";
 
   // Defining async function
   async function getapi(url) {
