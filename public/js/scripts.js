@@ -17,8 +17,8 @@ function upcomingMovies() {
     var data = await response.json();
     console.log("SHOW ME UPCOMING MOVIES", data);
     createUpcomingMovies(data);
-    moviedata.upcoming = data.results;
   }
+  moviedata.upcoming = data.results;
   // Calling that async function
   getapi(api_url);
 }
