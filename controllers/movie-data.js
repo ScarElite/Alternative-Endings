@@ -1,9 +1,12 @@
 const router = require("express").Router();
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 
 router.get("/upcoming", (req, res) => {
   const apiUrl =
     "https://api.themoviedb.org/3/movie/upcoming?api_key=" +
-    env.API_KEY +
+    process.env.API_KEY +
     "&language=en-US&page=1";
 
   fetch(apiUrl)
