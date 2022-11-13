@@ -20,15 +20,15 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Post,
-        attributes: ['id', 'title', 'movie_id', 'created_at']
+        attributes: ["id", "title", "movie_id", "created_at"],
       },
       {
         model: Post,
-        attributes: ['title'],
+        attributes: ["title"],
         through: Vote,
-        as: 'voted_posts'
-      }
-    ]
+        as: "voted_posts",
+      },
+    ],
   })
     .then((dbUserData) => {
       if (!dbUserData) {
@@ -51,7 +51,7 @@ router.post("/", (req, res) => {
     password: req.body.password,
   })
     .then((dbUserData) => {
-      sendMail(req.body.email)
+      sendMail(req.body.email);
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
