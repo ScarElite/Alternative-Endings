@@ -1,108 +1,194 @@
 <div class="dashboard-pic">
-  <section class="pt-6 post-indiv">
-    <div class="content is-size-3 m-6">
-      Have you ever seen a movie and wished the ending were different? With
-      Alternate Endings you can recreate a movies ending and share with others!
-      What if Jack was survived the Titanic or Iron Man never died in Avengers
-      Endgame? Share your endings and plot twist with us! Click on the movie
-      image to learn more and post your ending.
-    </div>
-    <div class="card-content">
-      <div
-        class="column box is-multiline is-align-items-center p-4 m-4 mb-6 has-background-danger"
-      >
-        <h2 class="title">Top Alternative Endings
-          <i class="fa-solid fa-award"></i></h2>
-        <table class="table mt-3 topfive">
-          <thead>
-            <tr>
-              <th><abbr title="Position">Pos</abbr></th>
-              <th>Movie</th>
-              <th><abbr title="Played">Alternative Endings Rating</abbr></th>
-              <th>User</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>1</th>
-              <td>
-                <a href="#">Movie Name</a>
-              </td>
-              <td>4</td>
-              <td>
-                <a href="#">User</a>
-              </td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>
-                <a href="#">Movie Name</a>
-              </td>
-              <td>2</td>
-              <td>
-                <a href="#">User</a>
-              </td>
-            </tr>
-            <tr>
-              <th>3</th>
-              <td>
-                <a href="#">Movie Name</a>
-              </td>
-              <td>3</td>
-              <td>
-                <a href="#">User</a>
-              </td>
-            </tr>
-            <tr>
-              <th>4</th>
-              <td>
-                <a href="#">Movie Name</a>
-              </td>
-              <td>5</td>
-              <td>
-                <a href="#">User</a>
-              </td>
-            </tr>
-            <tr>
-              <th>5</th>
-              <td>
-                <a href="#">Movie Name</a>
-              </td>
-              <td>2</td>
-              <td>
-                <a href="#">User</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+  <div class="post-blur">
+    <section class="pt-6 post-indiv hero is-medium">
+      <div class="container is-fluid mb-6 mt-6">
+        <div class="content title">
+          Have you ever seen a movie and wished the ending were different? With
+          Alternate Endings you can recreate a movies ending and share with others!
+          What if Jack survived the Titanic or Iron Man never died in Avengers
+          Endgame? Share your endings and plot twist with us! Click on the movie
+          image to learn more and post your ending.
+        </div>
       </div>
-    </div>
-  </section>
-  <div class="columns p-4">
-    <div class="columns is-flex-direction-column p-6 is-6 post-blur m-6">
-      <div class="column is-three-quarters">
+    </section>
+    <div class="columns">
+      <div class="column">
         <div class="pb-6">
-          <p class="title has-text-black">Movies Coming Soon...</p>
-          <p class="subtitle has-text-black">Coming soon for your review</p>
-        </div>
-        <div class="movieslider comingsoontriggers">
-          {{! Movie Slider }}
-        </div>
-      </div>
-    </div>
-    <div class="columns p-4">
-      <div class="columns is-flex-direction-column p-6 is-6 post-blur m-6">
-        <div class="column is-three-quarters">
-          <div class="pb-6">
-            <p class="title has-text-black">In Theaters...</p>
-            <p class="subtitle has-text-black">Post a review</p>
-          </div>
-          <div class="movieslider comingsoontriggers">
-            {{! Movie Slider }}
+          <div class="afaf fasfasafs">
+            <div class="container is-fluid">
+              <p class="title">In Theaters Now</p>
+              <p class="subtitle">Ready for Review</p>
+              <div class="swiper-container">
+                <div class="swiper-wrapper">
+
+
+                </div>
+                <div class="swiper-button-next swipebtn"></div>
+                <div class="swiper-button-prev swipebtn"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="pb-6">
+          <div class="afaf fasfasafs">
+            <div class="container is-fluid">
+              <p class="title">Upcoming</p>
+              <p class="subtitle">Movies coming soon</p>
+              <div class="swiper-container">
+                <div class="swiper-wrapper movies-comingsoon">
+
+
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next swipebtn"></div>
+                <div class="swiper-button-prev swipebtn"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container is-fluid pb-6">
+      <div class="panel">
+        <p class="panel-heading branded-color">Recent Alternative Endings</p>
+        <div class="mb-4 is-size-4">
+          {{#each posts as |post|}}
+          {{>home-posts post}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </div>
-<script src="/public/js/scripts.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+<script>
+  const swiper = new Swiper(".swiper-container", {
+    slidesPerView: 2,
+    slidesPerGroup: 1,
+    centeredSlides: true,
+    loop: false,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      // when window width is >= 600px
+      600: {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        spaceBetween: 5,
+        centeredSlides: true
+
+      },
+      // when window width is >= 900px
+      900: {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+        spaceBetween: 5,
+        centeredSlides: false
+
+      },
+      // when window width is >= 1200px
+      1200: {
+        slidesPerView: 4,
+        slidesPerGroup: 4,
+        spaceBetween: 5,
+        centeredSlides: false
+      },
+
+      // when window width is >= 1500px
+      1500: {
+        slidesPerView: 5,
+        slidesPerGroup: 5,
+        spaceBetween: 5,
+        centeredSlides: false
+      },
+
+      // when window width is >= 1800px
+      1800: {
+        slidesPerView: 6,
+        slidesPerGroup: 6,
+        spaceBetween: 5,
+        centeredSlides: false
+      }
+    }
+  });
+
+</script>
+
+
+<script src="/js/scripts.js"></script>
+
+{{#if loggedIn}}
+<script>
+  function showMovieInfo(data, choiceIndex, comingsoon) {
+
+    const modalEl = document.querySelector(".modal");
+    const modalMain = document.querySelector(".modal-card-body");
+    const modalTitle = document.querySelector(".modal-card-title");
+    const modalFooter = document.querySelector(".modal-card-foot");
+
+    // Modal title
+    modalTitle.textContent = `${data[choiceIndex].original_title}`
+
+    // Modal Content
+    modalMain.innerHTML = `
+    <div class="columns">
+        <div class="column is-one-third">
+            <img src="https://image.tmdb.org/t/p/w185${data[choiceIndex].poster_path}" alt="${data[choiceIndex].original_title}"/>
+        </div>
+        <div class="column">
+            <h1 class="title">${data[choiceIndex].original_title}</h1>
+            <p>${data[choiceIndex].overview}</p>
+        </div>
+    </div>
+    `;
+
+    // Modal Footer
+
+    if (comingsoon) {
+        modalFooter.innerHTML = `
+        <button class="button modalclose">Close</button>
+        <button class="button is-primary tooltip" disabled>
+            Write an alternative ending
+            <span class="tooltiptext">Movie has not yet been released</span>
+        </button>
+        `
+    } else {
+        modalFooter.innerHTML = `
+        <button class="button modalclose">Close</button>
+        <button class="button is-primary altending-btn">Write an alternative ending</button>
+        `
+        document.querySelector(".altending-btn").addEventListener("click", () => {
+            writeAlternativeEnding(data, choiceIndex);
+        })
+    }
+
+    const modalCloser = document.querySelector(".modal")
+    const closeButtonEl = document.querySelector(".modalclose")
+    document.querySelector(".modal-card").classList.replace("modal-search", "modal-movie")
+    closeButtonEl.addEventListener("click", () => {
+        modalCloser.classList.remove("is-active")
+    })
+
+
+
+    modalEl.classList.add("is-active");
+
+}
+
+</script>
+{{/if}}

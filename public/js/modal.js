@@ -15,62 +15,6 @@ const handleModalContent = (layout, data, choiceIndex, comingsoon) => {
     }
 };
 
-function showMovieInfo(data, choiceIndex, comingsoon) {
-
-    const modalEl = document.querySelector(".modal");
-    const modalMain = document.querySelector(".modal-card-body");
-    const modalTitle = document.querySelector(".modal-card-title");
-    const modalFooter = document.querySelector(".modal-card-foot");
-
-    // Modal title
-    modalTitle.textContent = `${data[choiceIndex].original_title}`
-
-    // Modal Content
-    modalMain.innerHTML = `
-    <div class="columns">
-        <div class="column is-one-third">
-            <img src="https://image.tmdb.org/t/p/w185${data[choiceIndex].poster_path}" alt="${data[choiceIndex].original_title}"/>
-        </div>
-        <div class="column">
-            <h1 class="title">${data[choiceIndex].original_title}</h1>
-            <p>${data[choiceIndex].overview}</p>
-        </div>
-    </div>
-    `;
-
-    // Modal Footer
-
-    if (comingsoon) {
-        modalFooter.innerHTML = `
-        <button class="button modalclose">Close</button>
-        <button class="button is-primary tooltip" disabled>
-            Write an alternative ending
-            <span class="tooltiptext">Movie has not yet been released</span>
-        </button>
-        `
-    } else {
-        modalFooter.innerHTML = `
-        <button class="button modalclose">Close</button>
-        <button class="button is-primary altending-btn">Write an alternative ending</button>
-        `
-        document.querySelector(".altending-btn").addEventListener("click", () => {
-            writeAlternativeEnding(data, choiceIndex);
-        })
-    }
-
-    const modalCloser = document.querySelector(".modal")
-    const closeButtonEl = document.querySelector(".modalclose")
-    document.querySelector(".modal-card").classList.replace("modal-search", "modal-movie")
-    closeButtonEl.addEventListener("click", () => {
-        modalCloser.classList.remove("is-active")
-    })
-
-
-
-    modalEl.classList.add("is-active");
-
-}
-
 function writeAlternativeEnding(data, choiceIndex) {
     const modalEl = document.querySelector(".modal");
     const modalMain = document.querySelector(".modal-card-body");
@@ -127,20 +71,19 @@ function writeAlternativeEnding(data, choiceIndex) {
         const response = await fetch("/api/posts", {
             method: "POST",
             body: JSON.stringify({
-              title,
-              content,
-              movie_id
+                title,
+                content,
+                movie_id
             }),
             headers: {
-              "Content-Type": "application/json",
+                "Content-Type": "application/json",
             },
-          });
-          if (response.ok) {
-            // document.location.replace("/dashboard");
-            console.log("ok")
-          } else {
+        });
+        if (response.ok) {
+            document.location.replace("/dashboard");
+        } else {
             alert(response.statusText);
-          }
+        }
     })
 
     const modalCloser = document.querySelector(".modal")

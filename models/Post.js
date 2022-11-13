@@ -46,7 +46,7 @@ Post.init(
     },
     movie_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,

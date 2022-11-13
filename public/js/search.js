@@ -11,7 +11,7 @@ function showSearchResults(data, query) {
     // Modal Content
     modalMain.innerHTML = `
     <div class="searchresultsgroup">
-
+        
     </div>
     `;
 
@@ -70,7 +70,11 @@ document.querySelector(".moviesearch").addEventListener("keypress", (event) => {
         fetch(apiUrl)
             .then(function (response) {
                 response.json().then(function (data) {
-                    showSearchResults(data, searchterm);
+                    if(data.results.length) {
+                        showSearchResults(data, searchterm);
+                    } else {
+                        noSearchResults(searchterm)
+                    }
                 });
             })
             .catch((err) => {
