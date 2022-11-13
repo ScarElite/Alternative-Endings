@@ -44,7 +44,7 @@ https://github.com/ScarElite/Alternative-Endings
 
 ## Heroku Deployment
 
-https://sheltered-citadel-89762.herokuapp.com/
+https://alternative-endings.herokuapp.com/
 
 ## Installations
 
