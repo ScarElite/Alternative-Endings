@@ -5,22 +5,24 @@ class Post extends Model {
   static upvote(body, models) {
     return models.Vote.create({
       user_id: body.user_id,
-      post_id: body.post_id
+      post_id: body.post_id,
     }).then(() => {
       return Post.findOne({
         where: {
-          id: body.post_id
+          id: body.post_id,
         },
         attributes: [
-          'id',
-          'title',
-          'movie_id',
-          'created_at',
+          "id",
+          "title",
+          "movie_id",
+          "created_at",
           [
-            sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'),
-            'vote_count'
-          ]
-        ]
+            sequelize.literal(
+              "(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)"
+            ),
+            "vote_count",
+          ],
+        ],
       });
     });
   }
@@ -44,7 +46,7 @@ Post.init(
     },
     movie_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
