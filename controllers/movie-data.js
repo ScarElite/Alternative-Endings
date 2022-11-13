@@ -10,7 +10,7 @@ router.get("/upcoming", (req, res) => {
     .then(function (response) {
       response.json().then(function (data) {
         console.log(data);
-        res.send(data);
+        res.send({ data: data });
       });
     })
     .catch((err) => {
