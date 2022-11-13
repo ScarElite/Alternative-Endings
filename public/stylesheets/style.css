@@ -1,3 +1,10 @@
+:root {
+  --primary-color: #3204fdba;
+  --secondary-color: #763e9bcc;
+  --tertiary-color: #ae374c;
+  --quaternary-color: #4361ee;
+}
+
 .movieimg {
   height: 250px;
 }
@@ -209,11 +216,4 @@ nav {
     max-width: 10.5rem;
     border-radius: 2px;
   }
-}
-
-:root {
-  --primary-color: #3204fdba;
-  --secondary-color: #763e9bcc;
-  --tertiary-color: #ae374c;
-  --quaternary-color: #4361ee;
 }
