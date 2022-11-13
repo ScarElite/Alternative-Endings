@@ -1,32 +1,31 @@
 // Chooses which modal to show
 const handleModalContent = (layout, data, choiceIndex, comingsoon) => {
-    switch (layout) {
-        case "movieinfo":
-            showMovieInfo(data, choiceIndex, comingsoon);
-            break;
+  switch (layout) {
+    case "movieinfo":
+      showMovieInfo(data, choiceIndex, comingsoon);
+      break;
 
-        case "closemodal":
-            const modalEl = document.querySelector(".modal");
-            modalEl.classList.remove("is-active");
-            break;
+    case "closemodal":
+      const modalEl = document.querySelector(".modal");
+      modalEl.classList.remove("is-active");
+      break;
 
-        default:
-            break;
-    }
+    default:
+      break;
+  }
 };
 
 function showMovieInfo(data, choiceIndex, comingsoon) {
+  const modalEl = document.querySelector(".modal");
+  const modalMain = document.querySelector(".modal-card-body");
+  const modalTitle = document.querySelector(".modal-card-title");
+  const modalFooter = document.querySelector(".modal-card-foot");
 
-    const modalEl = document.querySelector(".modal");
-    const modalMain = document.querySelector(".modal-card-body");
-    const modalTitle = document.querySelector(".modal-card-title");
-    const modalFooter = document.querySelector(".modal-card-foot");
+  // Modal title
+  modalTitle.textContent = `${data[choiceIndex].original_title}`;
 
-    // Modal title
-    modalTitle.textContent = `${data[choiceIndex].original_title}`
-
-    // Modal Content
-    modalMain.innerHTML = `
+  // Modal Content
+  modalMain.innerHTML = `
     <div class="columns">
         <div class="column is-one-third">
             <img src="https://image.tmdb.org/t/p/w185${data[choiceIndex].poster_path}" alt="${data[choiceIndex].original_title}"/>
@@ -38,50 +37,49 @@ function showMovieInfo(data, choiceIndex, comingsoon) {
     </div>
     `;
 
-    // Modal Footer
+  // Modal Footer
 
-    if (comingsoon) {
-        modalFooter.innerHTML = `
+  if (comingsoon) {
+    modalFooter.innerHTML = `
         <button class="button modalclose">Close</button>
         <button class="button is-primary tooltip" disabled>
             Write an alternative ending
             <span class="tooltiptext">Movie has not yet been released</span>
         </button>
-        `
-    } else {
-        modalFooter.innerHTML = `
+        `;
+  } else {
+    modalFooter.innerHTML = `
         <button class="button modalclose">Close</button>
         <button class="button is-primary altending-btn">Write an alternative ending</button>
-        `
-        document.querySelector(".altending-btn").addEventListener("click", () => {
-            writeAlternativeEnding(data, choiceIndex);
-        })
-    }
+        `;
+    document.querySelector(".altending-btn").addEventListener("click", () => {
+      writeAlternativeEnding(data, choiceIndex);
+    });
+  }
 
-    const modalCloser = document.querySelector(".modal")
-    const closeButtonEl = document.querySelector(".modalclose")
-    document.querySelector(".modal-card").classList.replace("modal-search", "modal-movie")
-    closeButtonEl.addEventListener("click", () => {
-        modalCloser.classList.remove("is-active")
-    })
+  const modalCloser = document.querySelector(".modal");
+  const closeButtonEl = document.querySelector(".modalclose");
+  document
+    .querySelector(".modal-card")
+    .classList.replace("modal-search", "modal-movie");
+  closeButtonEl.addEventListener("click", () => {
+    modalCloser.classList.remove("is-active");
+  });
 
-
-
-    modalEl.classList.add("is-active");
-
+  modalEl.classList.add("is-active");
 }
 
 function writeAlternativeEnding(data, choiceIndex) {
-    const modalEl = document.querySelector(".modal");
-    const modalMain = document.querySelector(".modal-card-body");
-    const modalTitle = document.querySelector(".modal-card-title");
-    const modalFooter = document.querySelector(".modal-card-foot");
+  const modalEl = document.querySelector(".modal");
+  const modalMain = document.querySelector(".modal-card-body");
+  const modalTitle = document.querySelector(".modal-card-title");
+  const modalFooter = document.querySelector(".modal-card-foot");
 
-    // Modal title
-    modalTitle.innerHTML = `Alternative Ending for <span class="has-text-weight-semibold">${data[choiceIndex].original_title}</span>`
+  // Modal title
+  modalTitle.innerHTML = `Alternative Ending for <span class="has-text-weight-semibold">${data[choiceIndex].original_title}</span>`;
 
-    // Modal Content
-    modalMain.innerHTML = `
+  // Modal Content
+  modalMain.innerHTML = `
     <div class="columns">
         <div class="column is-one-third">
             <img src="https://image.tmdb.org/t/p/w185${data[choiceIndex].poster_path}" alt="${data[choiceIndex].original_title}"/>
@@ -112,43 +110,47 @@ function writeAlternativeEnding(data, choiceIndex) {
     </div>
     `;
 
-    // Modal Footer
+  // Modal Footer
 
-    modalFooter.innerHTML = `
+  modalFooter.innerHTML = `
         <button class="button modalclose">Cancel</button>
-    `
+    `;
 
-    document.querySelector(".altendingform").addEventListener("submit", async (event) => {
-        event.preventDefault();
-        let title = document.querySelector(".altTitle").value.trim();
-        let content = document.querySelector(".altending").value.trim();
-        let movie_id = data[choiceIndex].id
+  document
+    .querySelector(".altendingform")
+    .addEventListener("submit", async (event) => {
+      event.preventDefault();
+      let title = document.querySelector(".altTitle").value.trim();
+      let content = document.querySelector(".altending").value.trim();
+      let movie_id = data[choiceIndex].id;
 
-        const response = await fetch("/api/posts", {
-            method: "POST",
-            body: JSON.stringify({
-              title,
-              content,
-              movie_id
-            }),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-          if (response.ok) {
-            // document.location.replace("/dashboard");
-            console.log("ok")
-          } else {
-            alert(response.statusText);
-          }
-    })
+      const response = await fetch("/api/posts", {
+        method: "POST",
+        body: JSON.stringify({
+          title,
+          content,
+          movie_id,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.ok) {
+        document.location.replace("/dashboard");
+        console.log("ok");
+      } else {
+        alert(response.statusText);
+      }
+    });
 
-    const modalCloser = document.querySelector(".modal")
-    const closeButtonEl = document.querySelector(".modalclose")
-    const modalSEl = document.querySelector(".modal-card").classList.replace("modal-search", "modal-movie")
-    closeButtonEl.addEventListener("click", () => {
-        modalCloser.classList.remove("is-active")
-    })
+  const modalCloser = document.querySelector(".modal");
+  const closeButtonEl = document.querySelector(".modalclose");
+  const modalSEl = document
+    .querySelector(".modal-card")
+    .classList.replace("modal-search", "modal-movie");
+  closeButtonEl.addEventListener("click", () => {
+    modalCloser.classList.remove("is-active");
+  });
 
-    modalEl.classList.add("is-active");
+  modalEl.classList.add("is-active");
 }

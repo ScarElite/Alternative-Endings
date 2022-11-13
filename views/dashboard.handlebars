@@ -8,15 +8,12 @@
    <div>
 
   {{#if posts.length}}
-  <div class="notification is-danger is-light">
-    <div class="title">Your Posts</div>
-    <div class="heading">
-    <div class="cell mb-4 is-size-4">
+  <div class="panel is-danger is-light">
+    <p class="panel-heading">Your Posts</p>
+    <div class="mb-4 is-size-4">
         {{#each posts as |post|}}
-        <br>
         {{>post-info post}}
         {{/each}}
-    </div>
     </div>
   </div>
   {{else}}
@@ -28,7 +25,6 @@
 {{/if}}
    </div>
 </div>
-
 
 
 <script src="/js/add-post.js"></script>

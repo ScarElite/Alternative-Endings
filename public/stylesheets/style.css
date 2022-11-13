@@ -65,6 +65,16 @@
 
 .post-indiv {
   background: url(/assets/img/stock/paper.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.panel {
+  background-color: #fff;
+}
+
+.dashboard-panel {
+  width: 100%;
 }
 
 .fullheight {

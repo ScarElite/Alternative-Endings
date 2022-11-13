@@ -106,3 +106,8 @@
   </div>
 </div>
 <script src="/public/js/scripts.js"></script>
+{{#if loggedIn}}
+  <script src="/js/modal.js"></script>
+{{else}}
+  <script src="/js/modal-loggedout.js"></script>
+{{/if}}
