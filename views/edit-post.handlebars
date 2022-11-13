@@ -12,7 +12,7 @@
             <input
               type="text"
               name="post-title"
-              class="form-control"
+              class="input"
               id="post-title"
               value="{{post.title}}"
             />
@@ -24,7 +24,7 @@
             <textarea
               type="text"
               name="post-content"
-              class="form-control post-content"
+              class="input post-content"
               id="post-content"
             >{{post.content}}</textarea>
           </div>
@@ -32,11 +32,11 @@
         <div class="row">
           <div class="col-sm-10">
             <div class="d-flex justify-content-between">
-              <button type="submit" class="delete-post-button delete-btn">Delete
+              <button type="submit" class="button is-danger delete-post-button delete-btn">Delete
                 Post</button>
               <button
                 type="submit"
-                class="btn btn-primary"
+                class="button is-primary"
                 id="save-btn"
               >Save</button>
             </div>

@@ -31,7 +31,7 @@ router.get("/", withAuth, (req, res) => {
       res.render("dashboard", {
         posts,
         username: req.session.username,
-        loggedIn: true,
+        loggedIn: req.session.loggedIn,
       });
     })
     .catch((err) => {

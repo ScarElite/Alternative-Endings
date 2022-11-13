@@ -1,145 +1,142 @@
 let moviedata = {
   upcoming: [],
-  intheaters: [],
-};
+  intheaters: []
+}
 
 function upcomingMovies() {
-  console.log("Upcoming Movies!");
+  const apiUrl =
+    "https://api.themoviedb.org/3/movie/upcoming?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&page=1";
 
-  const api_url = "/movie-data/upcoming";
-
-  // Defining async function
-  async function getapi(url) {
-    // Storing response
-    const response = await fetch(url);
-
-    // Storing data in form of JSON
-    var data = await response.json();
-    console.log("SHOW ME UPCOMING MOVIES", data);
-    createUpcomingMovies(data);
-  }
-  moviedata.upcoming = data.results;
-  // Calling that async function
-  getapi(api_url);
+  fetch(apiUrl)
+    .then(function (response) {
+      response.json().then(function (data) {
+        createUpcomingMovies(data);
+        moviedata.upcoming = data.results
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 function createUpcomingMovies(data) {
-  var movieSliderEl = document.querySelector(".movieslider");
-  for (i = 2; i < 10; i++) {
-    const movieItemEl = document.createElement("button");
-    movieItemEl.classList.add("js-modal-trigger", "button-reset");
+  var movieSliderEl = document.querySelector(".swiper-wrapper");
+  for (i = 0; i < data.results.length; i++) {
+    const movieItemEl = document.createElement("div");
+    movieItemEl.classList.add("swiper-slide");
     movieItemEl.setAttribute("data-target", "modal-js-example");
     movieItemEl.innerHTML = `
-    <img
-      class="movieimg"
-      src="https://image.tmdb.org/t/p/w500${data.results[i].poster_path}"
-      alt="1"
-      data-index="${i}"
-    />`;
+    
+    <div class="swiper-slide">
+      <img
+        class="movieimg"
+        src="https://image.tmdb.org/t/p/w500${data.results[i].poster_path}"
+        alt="${data.results[i].original_title}"
+        data-index="${i}"
+      />
+    </div>
+    
+    `;
     movieSliderEl.appendChild(movieItemEl);
   }
-  var slider = tns({
-    container: ".movieslider",
-    items: 6,
-    gutter: 20,
-    slideBy: "page",
-    autoplay: false,
-    loop: true,
-  });
 }
 
 const inTheatersMovies = () => {
-  console.log("Upcoming Movies!");
+  const apiUrl =
+    "https://api.themoviedb.org/3/movie/now_playing?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&page=1";
 
-  const api_url = "/movie-data/theaters";
-
-  // Defining async function
-  async function getapi(url) {
-    // Storing response
-    const response = await fetch(url);
-
-    // Storing data in form of JSON
-    var data = await response.json();
-    console.log("SHOW ME IN THEATERS MOVIES", data);
-    createInTheatersMovies(data);
-    moviedata.upcoming = data.results;
-  }
-  // Calling that async function
-  getapi(api_url);
+  fetch(apiUrl)
+    .then(function (response) {
+      response.json().then(function (data) {
+        moviedata.intheaters = data.results
+        createInTheatersMovies(data);
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
-const createInTheatersMovies = (data) => {
-  var movieSliderEl = document.querySelector(".intheatersnow");
-  for (i = 0; i < 8; i++) {
-    const movieItemEl = document.createElement("button");
-    movieItemEl.classList.add("js-modal-trigger", "button-reset");
+function createInTheatersMovies(data) {
+  var movieSliderEl = document.querySelector(".movies-comingsoon");
+  for (i = 0; i < data.results.length; i++) {
+    const movieItemEl = document.createElement("div");
+    movieItemEl.classList.add("swiper-slide");
     movieItemEl.setAttribute("data-target", "modal-js-example");
     movieItemEl.innerHTML = `
-    <img
-      class="movieimg"
-      src="https://image.tmdb.org/t/p/w500${data.results[i].poster_path}"
-      alt="1"
-      data-index="${i}"
-    />`;
+    
+    <div class="swiper-slide">
+      <img
+        class="movieimg"
+        src="https://image.tmdb.org/t/p/w500${data.results[i].poster_path}"
+        alt="${data.results[i].original_title}"
+        data-index="${i}"
+      />
+    </div>
+    
+    `;
     movieSliderEl.appendChild(movieItemEl);
   }
-  var slider = tns({
-    container: ".intheatersnow",
-    items: 6,
-    gutter: 20,
-    slideBy: 1,
-    autoplay: false,
-    pages: false,
-    loop: true,
-  });
-};
+}
 
-const comingSoonTrigger = document.querySelector(".comingsoontriggers");
-comingSoonTrigger.addEventListener("click", (event) => {
-  const isButton = event.target.nodeName === "IMG";
-  if (!isButton) {
-    return;
-  }
+function noSearchResults(query) {
+  const modalEl = document.querySelector(".modal");
+  const modalMain = document.querySelector(".modal-card-body");
+  const modalTitle = document.querySelector(".modal-card-title");
+  const modalFooter = document.querySelector(".modal-card-foot");
 
-  let choiceIndex = event.target.getAttribute("data-index");
+  // Modal title
+  modalTitle.innerHTML = `No results for <strong>${query}</strong>.`
 
-  // Chooses the layout of the modal, passes in the in theaters movies into it as well as the index of the item that was clicked
-  // and passes the value true to make sure that the write an alternative ending -button is disabled.
-  handleModalContent("movieinfo", moviedata.upcoming, choiceIndex, true);
-});
+  // Modal Content
+  modalMain.innerHTML = `
+    <div class="is-flex is-justify-content-center">
+        <img src="/assets/img/stock/facepalm-disappointed.gif"
+    </div>
+    `;
 
-const inTheatersTrigger = document.querySelector(".intheaterstriggers");
+  // Modal Footer
+  modalFooter.innerHTML = `
+    <button class="button modalclose">Close</button>
+    `
+
+  const modalCloser = document.querySelector(".modal")
+  const closeButtonEl = document.querySelector(".modalclose")
+  document.querySelector(".modal-card").classList.replace("modal-movie", "modal-search")
+  closeButtonEl.addEventListener("click", () => {
+    modalCloser.classList.remove("is-active")
+  })
+
+  modalEl.classList.add("is-active");
+}
+
+const inTheatersTrigger = document.querySelector(".swiper-wrapper");
 inTheatersTrigger.addEventListener("click", (event) => {
   const isButton = event.target.nodeName === "IMG";
   if (!isButton) {
     return;
   }
 
-  let choiceIndex = event.target.getAttribute("data-index");
+  let choiceIndex = event.target.getAttribute("data-index")
 
   // Chooses the layout of the modal, passes in the in theaters movies into it as well as the index of the item that was clicked
-  // and passes the value false to make sure that the write an alternative ending -button is enabled.
+  // and passes the value false to make sure that the write an alternative ending -button is enabled. 
+  handleModalContent("movieinfo", moviedata.upcoming, choiceIndex, false);
+});
+
+const comingSoonTrigger = document.querySelector(".movies-comingsoon");
+comingSoonTrigger.addEventListener("click", (event) => {
+  const isButton = event.target.nodeName === "IMG";
+  if (!isButton) {
+    return;
+  }
+
+  let choiceIndex = event.target.getAttribute("data-index")
+
+  // Chooses the layout of the modal, passes in the in theaters movies into it as well as the index of the item that was clicked
+  // and passes the value false to make sure that the write an alternative ending -button is enabled. 
   handleModalContent("movieinfo", moviedata.intheaters, choiceIndex, false);
 });
 
-const topBoxOffice = () => {
-  console.log("Top Box Office Movies!");
-
-  const api_url = "/movie-data/something";
-
-  // Defining async function
-  async function getapi(url) {
-    // Storing response
-    const response = await fetch(url);
-
-    // Storing data in form of JSON
-    var data = await response.json();
-    console.log("SHOW ME THE DATA", data);
-  }
-  // Calling that async function
-  getapi(api_url);
-};
-
 upcomingMovies();
 inTheatersMovies();
-topBoxOffice();
