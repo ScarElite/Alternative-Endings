@@ -11,7 +11,7 @@ function showSearchResults(data, query) {
     // Modal Content
     modalMain.innerHTML = `
     <div class="searchresultsgroup">
-        
+
     </div>
     `;
 

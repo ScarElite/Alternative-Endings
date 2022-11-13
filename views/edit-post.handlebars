@@ -1,43 +1,52 @@
-<div class="row">
-  <h3 class="mb-4">Editing "{{post.title}}"</h3>
-</div>
-<div class="row mb-4">
-  <form class="edit-post-form">
-    <div class="row mb-3">
-      <div class="col-sm-10">
-        <label for="post-title" class="form-label">Post Title</label>
-        <input
-          type="text"
-          name="post-title"
-          class="form-control"
-          id="post-title"
-          value="{{post.title}}"
-        />
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-sm-10">
-        <label for="post-content" class="form-label">Content</label>
-        <textarea
-          type="text"
-          name="post-content"
-          class="form-control post-content"
-          id="post-content"
-        >{{post.content}}</textarea>
-      </div>
-    </div>
+<div class="dashboard-pic">
+  <div class="container mt-6 p-4 has-background-warning-light post-indiv">
     <div class="row">
-      <div class="col-sm-10">
-        <div class="d-flex justify-content-between">
-          <button
-            type="submit"
-            class="delete-post-button btn btn-outline-danger delete-btn"
-          >Delete Post</button>
-          <button type="submit" class="btn btn-primary" id="save-btn">Save</button>
-        </div>
-      </div>
+      <h3 class="mb-4 is-size-3">Editing "{{post.title}}"</h3>
+      <iframe src="https://embed.lottiefiles.com/animation/77380"></iframe>
     </div>
-  </form>
+    <div class="row mb-4">
+      <form class="edit-post-form">
+        <div class="row mb-3">
+          <div class="col-sm-10">
+            <label for="post-title" class="form-label">Post Title</label>
+            <input
+              type="text"
+              name="post-title"
+              class="form-control"
+              id="post-title"
+              value="{{post.title}}"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-10">
+            <label for="post-content" class="form-label">Content</label>
+            <textarea
+              type="text"
+              name="post-content"
+              class="form-control post-content"
+              id="post-content"
+            >{{post.content}}</textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-10">
+            <div class="d-flex justify-content-between">
+              <button
+                type="submit"
+                class="delete-post-button btn btn-outline-danger delete-btn"
+              >Delete Post</button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                id="save-btn"
+              >Save</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
 
 <script src="/js/edit-post.js"></script>
