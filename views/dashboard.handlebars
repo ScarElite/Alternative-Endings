@@ -1,15 +1,14 @@
 <div class="dashboard-pic">
 <div class="container mt-6 p-4 post-blur">
-   <div class="title"><h1 class="title mb-4 mt-6"></h1></div>
    <div class="subtitle"><h2 class="title mb-4"></h2></div>
-   <h2 class="mb-4 is-size-3 message-header has-text-black has-background-danger">Hello {{username}} Welcome Back!
+   <h2 class="mb-4 is-size-3 has-text-white branded-color"> Hello {{username}} Welcome Back!
     <iframe src="https://embed.lottiefiles.com/animation/33186"></iframe><i class="fa-solid fa-heart"></i>
    </h2>
    <div>
 
   {{#if posts.length}}
-  <div class="panel is-danger is-light">
-    <p class="panel-heading">Your Posts</p>
+  <div class="panel">
+    <p class="panel-heading branded-color">Your Posts</p>
     <div class="mb-4 is-size-4">
         {{#each posts as |post|}}
         {{>post-info post}}
