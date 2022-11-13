@@ -3,14 +3,14 @@ const router = require("express").Router();
 router.get("/upcoming", (req, res) => {
   const apiUrl =
     "https://api.themoviedb.org/3/movie/upcoming?api_key=" +
-    process.env.API_KEY +
+    env.API_KEY +
     "&language=en-US&page=1";
 
   fetch(apiUrl)
     .then(function (response) {
       response.json().then(function (data) {
         console.log(data);
-        res.send({ data: data });
+        res.send(data);
       });
     })
     .catch((err) => {
