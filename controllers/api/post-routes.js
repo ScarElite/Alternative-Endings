@@ -57,7 +57,7 @@ router.post("/", (req, res) => {
     title: req.body.title,
     content: req.body.content,
     user_id: req.session.user_id,
-    movie_id: req.body.movie_id
+    movie_id: req.body.movie_id,
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {

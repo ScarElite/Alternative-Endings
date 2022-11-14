@@ -1,22 +1,15 @@
-function movieReview() {
-  console.log("Movie Review!");
+let apiUrl = `https://api.themoviedb.org/3/movie/${postMovieId}?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US`;
 
-  const api_url = "/movie-data/review";
-
-  // Defining async function
-  async function getapi(url) {
-    // Storing response
-    const response = await fetch(url);
-
-    // Storing data in form of JSON
-    var data = await response.json();
-    console.log("SHOW ME THE REVIEW", data);
-    showMovieInfo(data);
-    moviedata.upcoming = data.results;
-  }
-  // Calling that async function
-  getapi(api_url);
-}
+fetch(apiUrl)
+  .then(function (response) {
+    response.json().then(function (data) {
+      console.log(data);
+      showMovieInfo(data);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 function showMovieInfo(data) {
   const moviePoster = document.querySelector(".movieposter");
