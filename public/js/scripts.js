@@ -17,7 +17,6 @@ function upcomingMovies() {
     var data = await response.json();
     console.log("SHOW ME UPCOMING MOVIES", data);
     createUpcomingMovies(data);
-    console.log("DOES THIS DATA WORK", data);
     moviedata.upcoming = data.results;
   }
   // Calling that async function
