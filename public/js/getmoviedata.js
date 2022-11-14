@@ -1,4 +1,6 @@
-let apiUrl = `https://api.themoviedb.org/3/movie/${postMovieId}?api_key=${process.env.API_KEY}&language=en-US`;
+const apiKey = process.env.API_KEY;
+
+let apiUrl = `https://api.themoviedb.org/3/movie/${postMovieId}?api_key=${apiKey}&language=en-US`;
 
 fetch(apiUrl)
   .then(function (response) {
