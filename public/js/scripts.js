@@ -59,7 +59,7 @@ const inTheatersMovies = () => {
     var data = await response.json();
     console.log("SHOW ME IN THEATERS MOVIES", data);
     createInTheatersMovies(data);
-    moviedata.upcoming = data.results;
+    moviedata.intheaters = data.results;
   }
   // Calling that async function
   getapi(api_url);
