@@ -10,7 +10,7 @@ const nodemailer = require("nodemailer");
 // };
 
 // use a template file with nodemailer
-transporter.use("compile", hbs(handlebarOptions));
+// transporter.use("compile", hbs(handlebarOptions));
 
 function sendMail(email) {
   let transporter = nodemailer.createTransport({
