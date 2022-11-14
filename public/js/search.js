@@ -1,30 +1,30 @@
 function showSearchResults(data, query) {
-    searchData = data
-    const modalEl = document.querySelector(".modal");
-    const modalMain = document.querySelector(".modal-card-body");
-    const modalTitle = document.querySelector(".modal-card-title");
-    const modalFooter = document.querySelector(".modal-card-foot");
+  searchData = data;
+  const modalEl = document.querySelector(".modal");
+  const modalMain = document.querySelector(".modal-card-body");
+  const modalTitle = document.querySelector(".modal-card-title");
+  const modalFooter = document.querySelector(".modal-card-foot");
 
-    // Modal title
-    modalTitle.textContent = `Search results for "${query}"`
+  // Modal title
+  modalTitle.textContent = `Search results for "${query}"`;
 
-    // Modal Content
-    modalMain.innerHTML = `
+  // Modal Content
+  modalMain.innerHTML = `
     <div class="searchresultsgroup">
         
     </div>
     `;
 
-    // Modal Footer
-    modalFooter.innerHTML = `
+  // Modal Footer
+  modalFooter.innerHTML = `
     <button class="button modalclose">Close</button>
-    `
+    `;
 
-    let searchResultsEl = document.querySelector(".searchresultsgroup");
+  let searchResultsEl = document.querySelector(".searchresultsgroup");
 
-    for (let i = 0; i < 5; i++) {
-        let searchresultitem = document.createElement("div");
-        searchresultitem.innerHTML = `
+  for (let i = 0; i < 5; i++) {
+    let searchresultitem = document.createElement("div");
+    searchresultitem.innerHTML = `
         
         <div class="is-flex searchresultsitem">
             <div class="mr-3">
@@ -39,46 +39,50 @@ function showSearchResults(data, query) {
             </div>
         </div>
         
-        `
-        searchResultsEl.appendChild(searchresultitem);
-    }
+        `;
+    searchResultsEl.appendChild(searchresultitem);
+  }
 
-    const modalCloser = document.querySelector(".modal")
-    const closeButtonEl = document.querySelector(".modalclose")
-    document.querySelector(".modal-card").classList.replace("modal-movie", "modal-search")
-    closeButtonEl.addEventListener("click", () => {
-        modalCloser.classList.remove("is-active")
-    })
+  const modalCloser = document.querySelector(".modal");
+  const closeButtonEl = document.querySelector(".modalclose");
+  document
+    .querySelector(".modal-card")
+    .classList.replace("modal-movie", "modal-search");
+  closeButtonEl.addEventListener("click", () => {
+    modalCloser.classList.remove("is-active");
+  });
 
-    btns = document.getElementsByClassName("altending-btn");
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function () {
-            let searchChoiceIndex = event.target.getAttribute("data-choiceindex");
-            writeAlternativeEnding(data.results, searchChoiceIndex);
-        });
-    }
+  btns = document.getElementsByClassName("altending-btn");
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function () {
+      let searchChoiceIndex = event.target.getAttribute("data-choiceindex");
+      writeAlternativeEnding(data.results, searchChoiceIndex);
+    });
+  }
 
-    modalEl.classList.add("is-active");
+  modalEl.classList.add("is-active");
 }
 
 document.querySelector(".moviesearch").addEventListener("keypress", (event) => {
-    if (event.key === "Enter") {
-        let searchterm = document.querySelector(".moviesearch").value.trim();
+  if (event.key === "Enter") {
+    let searchterm = document.querySelector(".moviesearch").value.trim();
 
-        let apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=6bc85f8dbf1308d71b9a884c52f062a1&language=en-US&query=${searchterm}&page=1&include_adult=false`;
+    const api_url = `/movie-data/search/${searchterm}`;
 
-        fetch(apiUrl)
-            .then(function (response) {
-                response.json().then(function (data) {
-                    if(data.results.length) {
-                        showSearchResults(data, searchterm);
-                    } else {
-                        noSearchResults(searchterm)
-                    }
-                });
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+    async function getSingleMovieData(url) {
+      // Storing response
+      const response = await fetch(url);
+
+      // Storing data in form of JSON
+      var data = await response.json();
+
+      if (data.results.length) {
+        showSearchResults(data, searchterm);
+      } else {
+        noSearchResults(searchterm);
+      }
     }
+
+    getSingleMovieData(api_url);
+  }
 });

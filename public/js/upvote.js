@@ -16,7 +16,7 @@ async function upvoteClickHandler(event) {
   });
 
   if (response.ok) {
-    document.location.reload();
+    // document.location.reload();
   } else {
     alert(response.statusText);
   }
