@@ -3,6 +3,7 @@ let moviedata = {
   intheaters: [],
 };
 
+// Makes a call to the backend to grab the data that is returned from the fetch api call on that route
 function upcomingMovies() {
   console.log("Upcoming Movies!");
 
@@ -45,6 +46,7 @@ function createUpcomingMovies(data) {
   }
 }
 
+// Makes a call to the backend to grab the data that is returned from the fetch api call on that route
 const inTheatersMovies = () => {
   console.log("In Theaters Movies!");
 
