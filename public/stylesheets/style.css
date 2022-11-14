@@ -94,6 +94,10 @@ nav {
   z-index: 999 !important;
 }
 
+.is-fluid {
+  overflow: hidden;
+}
+
 .searchresultsitem {
   border-bottom: 1px solid #eaeaea;
   border-radius: 10px;
