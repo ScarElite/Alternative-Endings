@@ -1,16 +1,16 @@
 const nodemailer = require("nodemailer");
 
 // point to the template folder
-const handlebarOptions = {
-  viewEngine: {
-      partialsDir: path.resolve('./views/'),
-      defaultLayout: false,
-  },
-  viewPath: path.resolve('./views/'),
-};
+// const handlebarOptions = {
+//   viewEngine: {
+//     partialsDir: path.resolve("./views/"),
+//     defaultLayout: false,
+//   },
+//   viewPath: path.resolve("./views/"),
+// };
 
 // use a template file with nodemailer
-transporter.use('compile', hbs(handlebarOptions))
+transporter.use("compile", hbs(handlebarOptions));
 
 function sendMail(email) {
   let transporter = nodemailer.createTransport({
