@@ -59,7 +59,7 @@ const inTheatersMovies = () => {
     var data = await response.json();
     console.log("SHOW ME IN THEATERS MOVIES", data);
     createInTheatersMovies(data);
-    moviedata.upcoming = data.results;
+    moviedata.intheaters = data.results;
   }
   // Calling that async function
   getapi(api_url);
@@ -98,8 +98,9 @@ function noSearchResults(query) {
 
   // Modal Content
   modalMain.innerHTML = `
-    <div class="is-flex is-justify-content-center">
-        <img src="/assets/img/stock/facepalm-disappointed.gif"
+    <div class="is-flex is-justify-content-center is-flex-direction-column">
+    <p class="title">UGH sorry, I have failed you!</p>
+    <img src="/assets/img/stock/facepalm-disappointed.gif" />
     </div>
     `;
 
