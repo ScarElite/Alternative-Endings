@@ -1,17 +1,22 @@
-const apiKey = process.env.API_KEY;
+function movieReview() {
+  console.log("Movie Review!");
 
-let apiUrl = `https://api.themoviedb.org/3/movie/${postMovieId}?api_key=${apiKey}&language=en-US`;
+  const api_url = "/movie-data/review";
 
-fetch(apiUrl)
-  .then(function (response) {
-    response.json().then(function (data) {
-      console.log(data);
-      showMovieInfo(data);
-    });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+  // Defining async function
+  async function getapi(url) {
+    // Storing response
+    const response = await fetch(url);
+
+    // Storing data in form of JSON
+    var data = await response.json();
+    console.log("SHOW ME THE REVIEW", data);
+    showMovieInfo(data);
+    moviedata.upcoming = data.results;
+  }
+  // Calling that async function
+  getapi(api_url);
+}
 
 function showMovieInfo(data) {
   const moviePoster = document.querySelector(".movieposter");

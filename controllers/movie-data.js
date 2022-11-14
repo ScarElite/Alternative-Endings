@@ -18,11 +18,13 @@ router.get("/upcoming", (req, res) => {
     });
 });
 
-router.get("/something", (req, res) => {
+router.get("/review", (req, res) => {
   const apiUrl =
-    "https://api.themoviedb.org/3/movie/popular?api_key=" +
+    "https://api.themoviedb.org/3/movie/" +
+    req.params +
+    "?api_key=" +
     process.env.API_KEY +
-    "&language=en-US&page=1";
+    "&language=en-US";
 
   fetch(apiUrl)
     .then(function (response) {
